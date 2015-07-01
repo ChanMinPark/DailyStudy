@@ -28,3 +28,4 @@ $sudo resize2fs /dev/mmcblk0p2
 를 입력하면 size가 증가한다.(df -h 로 확인)
 
 >> 수정1
+>> 수정2
