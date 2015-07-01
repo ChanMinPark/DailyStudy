@@ -1,0 +1,51 @@
+>> 라즈베리파이 micro SD card 용량 늘리기
+(1) raspi-config를 통한 간단한 방법
+command line에서 [sudo raspi-config]명령어를 입력하여 라즈비안 설정도구로 들어간다.
+Setup Option에서 1번 Expand Filesystem을 선택하면 자동으로 용량이 최대치로 잡힌다.
+
+(2) Command line에서 수동으로 늘리기
+(출처 : http://zelits.tistory.com/65)
+
+ㄱ) 우선 파티션 용량을 확인한다.
+$df -h
+루트의 size가 sd card의 최대치가 아닌것을 볼 수 있다.
+
+ㄴ) 파티션 리스트를 확인한다.
+$sudo fdisk -l
+
+ㄷ) $sudo fdisk -u -c /dev/mmcblk0 를 입력한다. 그러면 커맨드를 입력할 수 있게 된다.
+    (u : 유닛(units)정보를 열람하거나 변경할 수 있음.)
+    (c : DOS호환가능한 플래그 설정.)
+    'p'를 누른다. 그럼 파티션 리스트가 나온다.
+    'd'를 누르고 2를 누른다. 2번째 디바이스를 의미
+    'n' -> 'p' -> '2' -> '122880'(섹터시작값) -> '그냥 엔터' 를 차례대로 수행
+    'w'로 커맨드 빠져나온다.
+
+ㄹ)$sudo reboot 으로 재부팅한다.
+
+ㅁ)재부팅후에
+$sudo resize2fs /dev/mmcblk0p2
+를 입력하면 size가 증가한다.(df -h 로 확인)
+
+
+
+>> GitHub 사용하기
+<준비>
+1. GitHub 사이트에서 repository를 만든다. 그러면 repository에 대한 주소를 획득할 수 있다.
+2. 리눅스에서 로컬repository로 사용할 폴더를 새로 만든다. 이 폴더는 GitHub 사이트에서 만든 repository와 연동시킬 것이다.
+
+<로컬repository에서 git을 사용하기 위한 설정작업>
+3. 리눅스에서 [$sudo apt-get install git]을 수행하여 git을 설치한다.
+4. 리눅스에서 만든 폴더에 들어가서 [$git init]명령을 수행하면 해당 폴더를 git에 연동시킬 폴더로 사용할 준비가 된다.
+5. git에 upload할때 사용될 사용자명과 이메일을 등록한다.
+[$git config --global user.name "이름"]
+[$git config --global user.email "이메일"]
+6. GitHub의 repository와 연동시키기 위해 repository주소를 닉네임으로 등록한다.
+[$git remote add (닉네임) (repository주소)]
+
+<GitHub 사용>
+7. [$git pull 닉네임 master]로 현재 GitHub에 있는 자료들을 로컬로 동기화 시킨다.
+8. 파일의 추가,수정,삭제 등의 변경이 발생하면
+[$git add (파일명)]으로 추가하고
+[$git commint -m "메세지"]를 한다. 그리고나서
+[$git push -u 닉네임 master]로 GitHub에 최종적으로 업로드한다.
