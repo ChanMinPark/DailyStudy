@@ -12,7 +12,7 @@
 먼저 자바를 설치하고 환경설정을 해주어야한다. 하지만 자바가 기본적으로 깔려있어서 환경설정만 해준다.
 고원식 연구원님의 가이드에는 /etc/profile에 환경설정을 해야한다고 하였지만 적용되지 않는다.
 자바 환경설정을 hbase-1.0.1.1폴더에 conf폴더에 hbase-env.sh 맨 밑에 해준다.
-(리눅스 전체에 적용되게 하기 위해서는 ~/.bashrc 에 써놔야하는거 같은데 여기써서 export 명령어로 확인하면 확인은 되지만 hbase설치에서 먹히질 않는다.. bashrc에 추가하고 난 후에는 source로 적용해줌)
+(리눅스 전체에 적용되게 하기 위해서는 /etc/profile에, 해당 사용자에게만 적용되게는 ~/.bashrc 에 써놔야하는거 같은데 여기써서 export 명령어로 확인하면 확인은 되지만 hbase설치에서 먹히질 않는다.. bashrc에 추가하고 난 후에는 source로 적용해줌)
 #JAVA_HOME=/usr/
 #export JAVA_HOME
 #export PATH=$PATH:$JAVA_HOME/bin
