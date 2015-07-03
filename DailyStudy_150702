@@ -19,7 +19,7 @@
 
 <hbase 설치> *라즈베리파이를 처음 이미지를 올리면 size가 작게 잡힌다. 그러면 아래진행될 사항들이 용량부족으로 수행되지 않으니 반드시 resizing을 해주어야한다. 
 $cd /usr/local
-$mkdir data
+$sudo mkdir data
 $sudo wget http://www.apache.org/dist/hbase/stable/hbase-1.0.1.1-bin.tar.gz
 $sudo tar xvfz hbase-1.0.1.1-bin.tar.gz
 $cd hbase-1.0.1.1
