@@ -59,6 +59,8 @@ $sudo apt-get install gnuplot
 $sudo apt-get install dh-autoreconf
 
 <OpenTSDB 설치>
+**나중에 build과정에서 JAVA heap 관련 에러가 발생하는것을 방지하기 위해 ~/.bashrc에
+[export JAVA_OPTS="-Xms512m -Xmx2048m -XX:MaxPermSize=512m"]추가해준다.
 $cd /usr/local
 $sudo git clone git://github.com/OpenTSDB/opentsdb.git
 $cd opentsdb
