@@ -1,6 +1,6 @@
 (Tip. MarkDown 표 편리하게 작성해주는 사이트 http://www.tablesgenerator.com/markdown_tables)
 
-#**>>라즈베리파이에 LCD 연결시키기(bold)**  
+#**>>라즈베리파이에 LCD 연결시키기**  
 ####1. LCD pin과 라즈베리파이 GPIO의 결선  
 (lcd_connect.py 기준)  
 
@@ -24,3 +24,5 @@
 | 16      	| -R/red              	| 16         	|
 | 17      	| -G/green            	| 12         	|
 | 18      	| -B/blue             	| 7          	|
+
+![]()  
