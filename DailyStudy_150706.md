@@ -54,3 +54,5 @@ $sudo raspi-config
 i2c-bcm2708  
 i2c-dev  
   
+(4) 재부팅  
+$sudo reboot  
