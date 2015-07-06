@@ -51,7 +51,7 @@ def send2tsdb(temp, humi):
       }
     }
     ret = requests.post(url, data=json.dumps(data))
-    print ret.text
+    #print ret.text
     
     data = {
       "metric": "pcm.humi",
@@ -62,7 +62,7 @@ def send2tsdb(temp, humi):
       }
     }
     ret = requests.post(url, data=json.dumps(data))
-    print ret.text
+    #print ret.text
 
 def main():
   lcd_init()
