@@ -1,5 +1,6 @@
 cd /usr/local/hbase-1.0.1.1/
 cd bin/
+sudo ./stop-hbase.sh
 sudo ./start-hbase.sh 
 
 cd /usr/local/opentsdb
@@ -12,4 +13,4 @@ tsdtmp=${TMPDIR-'/usr/local/data'}/tsd
 #screen -list
 #screen -r tsdb
 
-sudo ./build/tsdb tsd --port=4242 --staticroot=build/staticroot --cachedir=/usr/local/data --auto-metric &
+nohup sudo ./build/tsdb tsd --port=4242 --staticroot=build/staticroot --cachedir=/usr/local/data --auto-metric &
