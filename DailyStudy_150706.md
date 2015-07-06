@@ -69,5 +69,6 @@ $sudo reboot
 (3) 냉장고에서 뺀 후  
 ![](RefImage/temp_humi_3.jpg)
   
-(4) LCD에 온습도 출력하기
+(4) LCD에 온습도 출력하기  
 ![](RefImage/lcd_th_result.jpg)
+  
