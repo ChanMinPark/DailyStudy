@@ -50,7 +50,9 @@ def main():
         print "register error"
         break
     value = calc(temp, humi)
-    print "temp : %s\thumi : %s" % (value[0], value[1])
+    #print "temp : %s\thumi : %s" % (value[0], value[1])
+    lcd_string('Temp : %s' % (value[0]),LCD_LINE_1,1)
+    lcd_string('Humi : %s' % (value[1]),LCD_LINE_2,1)
     time.sleep(1)
     
 
