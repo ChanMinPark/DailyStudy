@@ -25,4 +25,4 @@
 | 17      	| -G/green            	| 12         	|
 | 18      	| -B/blue             	| 7          	|
 
-![](lcd_picture.jpg)
+![](RefImage/lcd_picture.jpg)
