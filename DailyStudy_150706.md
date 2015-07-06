@@ -38,3 +38,19 @@
 -Data Sheet(SHT20)  
 http://www.sensirion.com/fileadmin/user_upload/customers/sensirion/Dokumente/Humidity/Sensirion_Humidity_SHT20_Datasheet_V3.pdf
 
+####4. 라즈베리파이에 SHT2x 셋팅하기  
+(1) smbus package를 설치한다.  
+$sudo apt-get install python-smbus  
+$sudo apt-get install i2c-tools  
+  
+(2) Raspi-config에서 I2C를 enable해준다.
+$sudo raspi-config  
+-> 8. Advanced Options  
+-> A7. I2C
+-> (Yes)  
+-> (Yes)  
+  
+(3) modules 파일을 수정한다.(아래 2줄을 추가한다.)  
+i2c-bcm2708  
+i2c-dev  
+  
