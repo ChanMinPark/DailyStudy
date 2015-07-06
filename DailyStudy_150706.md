@@ -30,7 +30,11 @@
 |:---------------------:|:-----------------:|:------------------:|:---------:|
 |           2           |         1         |         SDA        |    SDA    |
 |           5           |         2         |         VSS        |    GND    |
-|           1           |         3         |         VDD        |    3.3V   |
+|           1           |         3         | NC (Not Connected) |     -     |
 |           -           |         4         | NC (Not Connected) |     -     |
-|           -           |         5         | NC (Not Connected) |           |
+|           1           |         5         |         VDD        |    3.3V   |
 |           3           |         6         |         SCL        |    SCL    |
+
+-Data Sheet(SHT20)  
+http://www.sensirion.com/fileadmin/user_upload/customers/sensirion/Dokumente/Humidity/Sensirion_Humidity_SHT20_Datasheet_V3.pdf
+
