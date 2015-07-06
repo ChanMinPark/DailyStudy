@@ -59,11 +59,11 @@ $sudo reboot
   
 ####5. 결과(냉장고에 넣고 빼기)
 (1) 냉장고에 넣기 전  
-![RefImage/temp_humi_1.jpg]()
+![](RefImage/temp_humi_1.jpg)
   
 (2) 냉장고 안  
-![RefImage/temp_humi_2.jpg]()
+![](RefImage/temp_humi_2.jpg)
   
 (3) 냉장고에서 뺀 후  
-![RefImage/temp_humi_3.jpg]()
+![](RefImage/temp_humi_3.jpg)
   
