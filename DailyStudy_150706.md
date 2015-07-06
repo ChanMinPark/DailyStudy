@@ -56,3 +56,4 @@ i2c-dev
   
 (4) 재부팅  
 $sudo reboot  
+
