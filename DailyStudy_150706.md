@@ -35,6 +35,8 @@
 |           1           |         5         |         VDD        |    3.3V   |
 |           3           |         6         |         SCL        |    SCL    |
 
+![](RefImage/lcd_th_lineconnect.jpg)
+
 -Data Sheet(SHT20)  
 http://www.sensirion.com/fileadmin/user_upload/customers/sensirion/Dokumente/Humidity/Sensirion_Humidity_SHT20_Datasheet_V3.pdf
 
@@ -67,3 +69,8 @@ $sudo reboot
 (3) 냉장고에서 뺀 후  
 ![](RefImage/temp_humi_3.jpg)
   
+(4) LCD에 온습도 출력하기  
+![](RefImage/lcd_th_result.jpg)
+  
+(5) TSD를 통해 온습도 확인하기  
+![](RefImage/temp_humi_tsd.jpg)  

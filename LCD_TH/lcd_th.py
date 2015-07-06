@@ -5,6 +5,8 @@ import sys
 from lcd import *
 import smbus
 import time
+import requests
+import json
 
 SHT20_ADDR = 0x40       # SHT20 register address
 #SHT20_CMD_R_T = 0xE3   # hold Master Mode (Temperature)
@@ -38,6 +40,30 @@ def calc(temp, humi):
 
     return tmp_temp, tmp_humi
 
+def send2tsdb(temp, humi):
+    url = "http://127.0.0.1:4242/api/put"
+    data = {
+      "metric": "pcm.temp",
+      "timestamp": time.time(),
+      "value": float(temp),
+      "tags": {
+         "host": "raspi-pcm"
+      }
+    }
+    ret = requests.post(url, data=json.dumps(data))
+    #print ret.text
+    
+    data = {
+      "metric": "pcm.humi",
+      "timestamp": time.time(),
+      "value": float(humi),
+      "tags": {
+         "host": "raspi-pcm"
+      }
+    }
+    ret = requests.post(url, data=json.dumps(data))
+    #print ret.text
+
 def main():
   lcd_init()
   print "Hello ChanMin"
@@ -50,6 +76,7 @@ def main():
         print "register error"
         break
     value = calc(temp, humi)
+    send2tsdb(value[0],value[1])
     #print "temp : %s\thumi : %s" % (value[0], value[1])
     lcd_string('Temp : %s' % (value[0]),LCD_LINE_1,1)
     lcd_string('Humi : %s' % (value[1]),LCD_LINE_2,1)
