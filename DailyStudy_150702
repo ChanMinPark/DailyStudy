@@ -65,9 +65,9 @@ $cd /usr/local
 $sudo git clone git://github.com/OpenTSDB/opentsdb.git
 $cd opentsdb
 $sudo ./build.sh
-$env COMPRESSION=NONE HBASE_HOME=/usr/local/hbase-1.0.1.1 ./src/create_table.sh
+$sudo env COMPRESSION=NONE HBASE_HOME=/usr/local/hbase-1.0.1.1 ./src/create_table.sh
 $tsdtmp=${TMPDIR-'/usr/local/data'}/tsd
-$mkdir -p "$tsdtmp"
+$sudo mkdir -p "$tsdtmp"
 
 
 $screen -dmS tsdb
@@ -85,3 +85,20 @@ $sudo nano startstop
 로 들어가면 위에서 조금 아래에 주석으로 TSD_HOST가 보인다. 그부분을 주석없이 사용중인 IP주소로 바꾼다.
   #TSD_HOST=dns.name.of.tsd -> TSD_HOST=192.168.x.x (ip주소)
 
+*<다음에 다시 OpenTSDB 실행할때 사용하는 코드>
+cd /usr/local/hbase-1.0.1.1/
+cd bin/
+sudo ./start-hbase.sh 
+
+cd /usr/local/opentsdb
+
+sudo env COMPRESSION=NONE HBASE_HOME=/usr/local/hbase-1.0.1.1 ./src/create_table.sh
+
+tsdtmp=${TMPDIR-'/usr/local/data'}/tsd
+
+screen -dmS tsdb
+screen -list
+screen -r tsdb
+
+echo "hello"
+sudo ./build/tsdb tsd --port=4242 --staticroot=build/staticroot --cachedir=/usr/local/data --auto-metric
