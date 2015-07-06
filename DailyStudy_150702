@@ -1,0 +1,87 @@
+>>오늘의 작업
+어제까지 Micro SD card에 이미지를 업로드하는 작업을 하였다.
+오늘은 아래 3가지 작업을 진행한다.
+(1) Hostname 변경 : PLUG-XXXX
+(2) Resizing
+(3) svn up
+
+
+
+>> OpenTSDB 설치
+<JAVA 설정>
+먼저 자바를 설치하고 환경설정을 해주어야한다. 하지만 자바가 기본적으로 깔려있어서 환경설정만 해준다.
+고원식 연구원님의 가이드에는 /etc/profile에 환경설정을 해야한다고 하였지만 적용되지 않는다.
+자바 환경설정을 hbase-1.0.1.1폴더에 conf폴더에 hbase-env.sh 맨 밑에 해준다.
+(리눅스 전체에 적용되게 하기 위해서는 /etc/profile에, 해당 사용자에게만 적용되게는 ~/.bashrc 에 써놔야하는거 같은데 여기써서 export 명령어로 확인하면 확인은 되지만 hbase설치에서 먹히질 않는다.. bashrc에 추가하고 난 후에는 source로 적용해줌)
+#JAVA_HOME=/usr/
+#export JAVA_HOME
+#export PATH=$PATH:$JAVA_HOME/bin
+
+<hbase 설치> *라즈베리파이를 처음 이미지를 올리면 size가 작게 잡힌다. 그러면 아래진행될 사항들이 용량부족으로 수행되지 않으니 반드시 resizing을 해주어야한다. 
+$cd /usr/local
+$sudo mkdir data
+$sudo wget http://www.apache.org/dist/hbase/stable/hbase-1.0.1.1-bin.tar.gz
+$sudo tar xvfz hbase-1.0.1.1-bin.tar.gz
+$cd hbase-1.0.1.1
+
+$hbase_rootdir=${TMPDIR-'/usr/local/data'}/tsdhbase
+$iface=lo`uname | sed -n s/Darwin/0/p`
+
+$sudo nano conf/hbase-site.xml
+
+(configuration 태그 사이의 내용을 넣어주면 됨)
+     #<?xml version="1.0"?>
+     #<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+     #<configuration>
+       <property>
+         <name>hbase.rootdir</name>
+         <value>file:///DIRECTORY/hbase</value>
+       </property>
+       <property>
+         <name>hbase.zookeeper.property.dataDir</name>
+         <value>/DIRECTORY/zookeeper</value>
+        </property>
+     #</configuration>
+
+hbase-site.xml 파일의 수정이 끝나면 hbase를 시작해준다.
+[$sudo ./bin/start-hbase.sh]
+
+<GnuPlot 설치>
+$cd /usr/local
+$sudo apt-get install gcc
+$sudo apt-get install libgd2-xpm-dev
+$sudo wget http://sourceforge.net/projects/gnuplot/files/gnuplot/4.6.3/gnuplot-4.6.3.tar.gz
+$sudo tar zxvf gnuplot-4.6.3.tar.gz
+$cd gnuplot-4.6.3
+$sudo ./configure
+$make install
+$sudo apt-get install gnuplot
+$sudo apt-get install dh-autoreconf
+
+<OpenTSDB 설치>
+**나중에 build과정에서 JAVA heap 관련 에러가 발생하는것을 방지하기 위해 ~/.bashrc에
+[export JAVA_OPTS="-Xms512m -Xmx2048m -XX:MaxPermSize=512m"]추가해준다.
+$cd /usr/local
+$sudo git clone git://github.com/OpenTSDB/opentsdb.git
+$cd opentsdb
+$sudo ./build.sh
+$env COMPRESSION=NONE HBASE_HOME=/usr/local/hbase-1.0.1.1 ./src/create_table.sh
+$tsdtmp=${TMPDIR-'/usr/local/data'}/tsd
+$mkdir -p "$tsdtmp"
+
+
+$screen -dmS tsdb
+$screen -list
+$screen -r tsdb
+이때 새로운 화면으로 넘어간다. 넘어가서 아래 명령어 입력
+$./build/tsdb tsd --port=4242 --staticroot=build/staticroot --cachedir=/usr/local/data --auto-metric
+실행 후에는 Ctl + a + d 로 빠져나온다.
+
+<Tcollector 설치>
+$cd /usr/local
+$sudo git clone git://github.com/OpenTSDB/tcollector.git
+$cd tcollector
+$sudo nano startstop
+로 들어가면 위에서 조금 아래에 주석으로 TSD_HOST가 보인다. 그부분을 주석없이 사용중인 IP주소로 바꾼다.
+  #TSD_HOST=dns.name.of.tsd -> TSD_HOST=192.168.x.x (ip주소)
+
