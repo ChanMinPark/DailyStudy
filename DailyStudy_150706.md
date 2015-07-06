@@ -72,5 +72,5 @@ $sudo reboot
 (4) LCD에 온습도 출력하기  
 ![](RefImage/lcd_th_result.jpg)
   
-(5) TSD를 통해 온습도 확인하기
+(5) TSD를 통해 온습도 확인하기  
 ![](RefImage/temp_humi_tsd.jpg)  
