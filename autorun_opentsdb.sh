@@ -12,4 +12,5 @@ screen -dmS tsdb
 screen -list
 screen -r tsdb
 
-sudo ./build/tsdb tsd --port=4242 --staticroot=build/staticroot --cachedir=/usr/local/data --auto-metric
+#if the screen is changed, write the below. and get out by ctrl+a+d
+#sudo ./build/tsdb tsd --port=4242 --staticroot=build/staticroot --cachedir=/usr/local/data --auto-metric
