@@ -12,7 +12,7 @@ data = {
     "timestamp": time.time(),
     "value": 2015,
     "tags": {
-       "host": "mypc
+       "host": "mypc"
     }
 }
 
