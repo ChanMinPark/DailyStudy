@@ -50,7 +50,7 @@ $sudo raspi-config
 -> (Yes)  
 -> (Yes)  
   
-(3) modules 파일을 수정한다.(아래 2줄을 추가한다.)  
+(3) modules 파일을 수정한다.(/etc/modules 의 맨아래에 2줄을 추가한다.)  
 i2c-bcm2708  
 i2c-dev  
   
