@@ -133,6 +133,96 @@ def main():
     else :
       redLCDon()
     time.sleep(3.5)
+    
+    ###############################################################
+    ppm = 0
+    try:
+      in_byte = serial_in_device.read(SERIAL_READ_BYTE) 
+      pos = 0
+    except serial.SerialException, e:
+      ledall_off()
+    if not (len(in_byte) is SERIAL_READ_BYTE) : 
+      logger.error("Serial packet size is strange, %d, expected size is %d" % (len(in_byte),SERIAL_READ_BYTE))
+      print 'serial byte read count error'
+      continue
+    # sometimes, 12 byte alighn is in-correct
+    # espacially run on /etc/rc.local
+    if not in_byte[9] is 'm':
+      shift_byte = checkAlignment(in_byte)
+      in_byte = shift_byte
+    if ('ppm' in in_byte):
+      if DEBUG_PRINT :
+        print '-----\/---------\/------ DEBUG_PRINT set -----\/---------\/------ '
+        for byte in in_byte :
+        #    print "serial_in_byte[%d]: " %pos,
+          pos += 1
+          if ord(byte) is 0x0d :
+        #        print "escape:", '0x0d'," Hex: ", byte.encode('hex')
+            continue
+          elif ord(byte) is 0x0a :
+        #        print "escape:", '0x0a'," Hex: ", byte.encode('hex')
+            continue
+        #    print " String:", byte,  "    Hex: ", byte.encode('hex')
+      if not (in_byte[2] is ' ') :
+        ppm += (int(in_byte[2])) * 1000
+      if not (in_byte[3] is ' ') :
+        ppm += (int(in_byte[3])) * 100
+      if not (in_byte[4] is ' ') :
+        ppm += (int(in_byte[4])) * 10
+      if not (in_byte[5] is ' ') :
+        ppm += (int(in_byte[5]))  
+      
+      logline = sensorname + ' CO2 Level is '+ str(ppm) + ' ppm' 
+      ledall_off()
+      if DEBUG_PRINT :
+        print logline
+      if ppm > 2100 : 
+        logger.error("%s", logline)
+        # cancel insert data into DB, skip.... since PPM is too high,
+        # it's abnormal in indoor buidling
+        ledred_on()
+        ### maybe change to BLINK RED, later
+        continue
+      else :
+        logger.info("%s", logline)
+     
+      print "macAddr : " + macAddr
+      
+      data = {
+        "metric": "rc1.co2.ppm",
+        "timestamp": time.time(),
+        "value": ppm,
+        "tags": {
+          "eth0": macAddr,
+          "hw": "raspberrypi2" ,
+          "sensor" : "co2.t110",
+          "name" : sensorname,
+          "floor_room": "10fl_min_room",
+          "building": "woosung",
+          "owner": "kang",
+          "country": "kor"
+         }
+         #tags should be less than 9, 8 is alright, 9 returns http error
+      }
+    # level = 1, 0~800 ppm,     blue- LED
+    # level = 2, 800~1000 ppm,  blue green - LED
+    # level = 3, 1000~1300 ppm, green - LED
+    # level = 4, 1300~1600 ppm, white - LED
+    # level = 5, 1600~1900 ppm, yellow - LED
+    # level = 6, 1900~ 2100 ppm,     purple - LED, if over 2100 - red LED
+    if ppm < 800 :  
+      ledblue_on()
+    elif ppm < 1000 :  
+      ledbluegreen_on()
+    elif ppm < 1300 :  
+      ledgreen_on()
+    elif ppm < 1600:  
+      ledwhite_on()
+    elif ppm < 1900:  
+      ledyellow_on()
+    elif ppm >= 1900 :  
+      ledpurple_on()
+    ###############################################################
 
 def run_cmd(cmd):
     p = Popen(cmd, shell=True, stdout=PIPE)
@@ -260,96 +350,6 @@ def init_process():
     print "MSG - now starting to read SERIAL PORT"
     print " "
     ledall_off()
-
-def run_co2_code():
-  ppm = 0
-  try:
-    in_byte = serial_in_device.read(SERIAL_READ_BYTE) 
-    pos = 0
-  except serial.SerialException, e:
-    ledall_off()
-  if not (len(in_byte) is SERIAL_READ_BYTE) : 
-    logger.error("Serial packet size is strange, %d, expected size is %d" % (len(in_byte),SERIAL_READ_BYTE))
-    print 'serial byte read count error'
-    continue
-  # sometimes, 12 byte alighn is in-correct
-  # espacially run on /etc/rc.local
-  if not in_byte[9] is 'm':
-    shift_byte = checkAlignment(in_byte)
-    in_byte = shift_byte
-  if ('ppm' in in_byte):
-    if DEBUG_PRINT :
-      print '-----\/---------\/------ DEBUG_PRINT set -----\/---------\/------ '
-      for byte in in_byte :
-      #    print "serial_in_byte[%d]: " %pos,
-        pos += 1
-        if ord(byte) is 0x0d :
-      #        print "escape:", '0x0d'," Hex: ", byte.encode('hex')
-          continue
-        elif ord(byte) is 0x0a :
-      #        print "escape:", '0x0a'," Hex: ", byte.encode('hex')
-          continue
-      #    print " String:", byte,  "    Hex: ", byte.encode('hex')
-    if not (in_byte[2] is ' ') :
-      ppm += (int(in_byte[2])) * 1000
-    if not (in_byte[3] is ' ') :
-      ppm += (int(in_byte[3])) * 100
-    if not (in_byte[4] is ' ') :
-      ppm += (int(in_byte[4])) * 10
-    if not (in_byte[5] is ' ') :
-      ppm += (int(in_byte[5]))  
-    
-    logline = sensorname + ' CO2 Level is '+ str(ppm) + ' ppm' 
-    ledall_off()
-    if DEBUG_PRINT :
-      print logline
-    if ppm > 2100 : 
-      logger.error("%s", logline)
-      # cancel insert data into DB, skip.... since PPM is too high,
-      # it's abnormal in indoor buidling
-      ledred_on()
-      ### maybe change to BLINK RED, later
-      continue
-    else :
-      logger.info("%s", logline)
-   
-    print "macAddr : " + macAddr
-    
-    data = {
-      "metric": "rc1.co2.ppm",
-      "timestamp": time.time(),
-      "value": ppm,
-      "tags": {
-        "eth0": macAddr,
-        "hw": "raspberrypi2" ,
-        "sensor" : "co2.t110",
-        "name" : sensorname,
-        "floor_room": "10fl_min_room",
-        "building": "woosung",
-        "owner": "kang",
-        "country": "kor"
-       }
-       #tags should be less than 9, 8 is alright, 9 returns http error
-    }
-  # level = 1, 0~800 ppm,     blue- LED
-  # level = 2, 800~1000 ppm,  blue green - LED
-  # level = 3, 1000~1300 ppm, green - LED
-  # level = 4, 1300~1600 ppm, white - LED
-  # level = 5, 1600~1900 ppm, yellow - LED
-  # level = 6, 1900~ 2100 ppm,     purple - LED, if over 2100 - red LED
-  if ppm < 800 :  
-    ledblue_on()
-  elif ppm < 1000 :  
-    ledbluegreen_on()
-  elif ppm < 1300 :  
-    ledgreen_on()
-  elif ppm < 1600:  
-    ledwhite_on()
-  elif ppm < 1900:  
-    ledyellow_on()
-  elif ppm >= 1900 :  
-    ledpurple_on()
-
 
 if __name__ == '__main__':
 
