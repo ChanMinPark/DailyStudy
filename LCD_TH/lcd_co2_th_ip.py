@@ -13,7 +13,7 @@ import serial,os
 import sys
 import RPi.GPIO as GPIO
 import logging
-import logging.hanlders
+import logging.handlers
 import fcntl, socket, struct
 sys.path.append("../lcd_berepi/lib")
 from lcd import *
