@@ -211,13 +211,25 @@ def stalk_chk() :
     return stalk
 
 def readCo2() :
-    # open RASPI serial device, 38400
-    try: 
-        serial_in_device = serial.Serial('/dev/ttyAMA0',38400)
-    except serial.SerialException, e:
-        logger.error("Serial port open error") 
-        ledall_off()
     ppm = 0
+    
+    logger = logging.getLogger(sensorname)
+    logger.setLevel(logging.DEBUG)
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    
+    fileHandler = logging.handlers.RotatingFileHandler(LOG_PATH, maxBytes=FILEMAXBYTE, backupCount=10)
+    fileHandler.setLevel(logging.DEBUG)
+    fileHandler.setFormatter(formatter)
+    logger.addHandler(fileHandler)
+
+    init_process()
+
+    try:
+        serial_in_device = serial.Serial('/dev/ttyAMA0', 38400)
+    except serial.SerialException, e:
+        logger.error("Serial port open error")
+        ledall_off()
+    
     try :
         in_byte = serial_in_device.read(SERIAL_READ_BYTE)
         pos = 0
@@ -268,23 +280,7 @@ def readCo2() :
 
 def main() :    
     lcd_init()          # When program start, init lcd
-    logger = logging.getLogger(sensorname)
-    logger.setLevel(logging.DEBUG)
-    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     
-    fileHandler = logging.handlers.RotatingFileHandler(LOG_PATH, maxBytes=FILEMAXBYTE, backupCount=10)
-    fileHandler.setLevel(logging.DEBUG)
-    fileHandler.setFormatter(formatter)
-    logger.addHandler(fileHandler)
-
-    init_process()
-
-    try:
-        serial_in_device = serial.Serial('/dev/ttyAMA0', 38400)
-    except serial.SerialException, e:
-        logger.error("Serial port open error")
-        ledall_off()
-
     print ip_chk(), wip_chk(), mac_chk(), wmac_chk(), stalk_chk()
     while True:
         value = backlight_func()
@@ -292,7 +288,7 @@ def main() :
             break
         tempVal = value[0]
         humiVal = value[1]
-        Co2Val = readCo2
+        Co2Val = readCo2()
         if not Co2Val == -1 :
             lcd_string_sensorVal(tempVal, humiVal, Co2Val)
             lcd_string_ip_addr()
@@ -310,4 +306,3 @@ if __name__ == '__main__' :
         lcd_byte(0x01, LCD_CMD)
         lcd_string("Goodbye!", LCD_LINE_1, 2)
         GPIO.cleanup()
-        
