@@ -9,7 +9,7 @@
 # for the detail of HW connection, see lcd_connect.py
 
 import sys
-sys.path.append("../lcd_derepi/lib")
+sys.path.append("../lcd_berepi/lib")
 from lcd import *
 import smbus
 import time
