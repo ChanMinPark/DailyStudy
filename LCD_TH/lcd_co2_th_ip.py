@@ -172,10 +172,11 @@ def main():
       if not (in_byte[5] is ' ') :
         ppm += (int(in_byte[5]))  
       
-      logline = sensorname + ' CO2 Level is '+ str(ppm) + ' ppm' 
+      #logline = sensorname + ' CO2 Level is '+ str(ppm) + ' ppm' 
       ledall_off()
       if DEBUG_PRINT :
-        print logline
+        #print logline
+        print "%s CO2 Level is %d ppm" %(sensorname, ppm)
       if ppm > 2100 : 
         logger.error("%s", logline)
         # cancel insert data into DB, skip.... since PPM is too high,
