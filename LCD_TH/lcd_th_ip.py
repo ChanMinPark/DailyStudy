@@ -30,12 +30,13 @@ bus = smbus.SMBus(1)    # 0 = /dev/i2c-0 (port I2C0), 1 = /dev/i2c-1 (port I2C1)
 def main():
   # Initialise display
   lcd_init()
+  whiteLCDon()
   print ip_chk(), wip_chk(), mac_chk(), wmac_chk(), stalk_chk()
 
   while True:
     lcd_string('IP address ', LCD_LINE_1,1)
     lcd_string('MAC eth0, wlan0',LCD_LINE_2,1)
-    blue_backlight(False) #turn on, yellow
+    #blue_backlight(False) #turn on, yellow
     time.sleep(2.5) # 3 second delay
 
     #Print eth ip and mac address.
@@ -45,7 +46,7 @@ def main():
     str = mac_chk()
     str = str[:-1]
     lcd_string('%s' % (str),LCD_LINE_2,1)
-    red_backlight(False) #turn on, yellow
+    #red_backlight(False) #turn on, yellow
     time.sleep(3.5) # 3 second delay
 
     #Print wlan ip and mac address.
@@ -55,7 +56,7 @@ def main():
     str = wmac_chk()
     str = str[:-1]
     lcd_string('%s' % (str),LCD_LINE_2,1)
-    green_backlight(False) #turn on, yellow
+    #green_backlight(False) #turn on, yellow
     time.sleep(3.5) # 5 second delay
         
     #Print stalk information.
@@ -63,7 +64,7 @@ def main():
     str = str[:-1]
     lcd_string('sTalk Channel' ,LCD_LINE_1,1)
     lcd_string('%s           ' % (str),LCD_LINE_2,1)
-    red_backlight(False) #turn on, yellow
+    #red_backlight(False) #turn on, yellow
     time.sleep(3.5) # 5 second delay
     
     #Print temp and humi information on LCD.
@@ -78,7 +79,7 @@ def main():
     lcd_string('Temp : %s' % (value[0]),LCD_LINE_1,1)
     lcd_string('Humi : %s' % (value[1]),LCD_LINE_2,1)
     #Turn on the led based on temperature
-    numTemp = fload(value[0])
+    numTemp = float(value[0])
     if (numTemp < 21) :
       blueLCDon()
     elif (numTemp < 24) :
