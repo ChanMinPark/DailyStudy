@@ -280,16 +280,16 @@ def run_co2_code():
   if ('ppm' in in_byte):
     if DEBUG_PRINT :
       print '-----\/---------\/------ DEBUG_PRINT set -----\/---------\/------ '
-        for byte in in_byte :
-        #    print "serial_in_byte[%d]: " %pos,
-          pos += 1
-          if ord(byte) is 0x0d :
-        #        print "escape:", '0x0d'," Hex: ", byte.encode('hex')
-            continue
-          elif ord(byte) is 0x0a :
-        #        print "escape:", '0x0a'," Hex: ", byte.encode('hex')
-            continue
-        #    print " String:", byte,  "    Hex: ", byte.encode('hex')
+      for byte in in_byte :
+      #    print "serial_in_byte[%d]: " %pos,
+        pos += 1
+        if ord(byte) is 0x0d :
+      #        print "escape:", '0x0d'," Hex: ", byte.encode('hex')
+          continue
+        elif ord(byte) is 0x0a :
+      #        print "escape:", '0x0a'," Hex: ", byte.encode('hex')
+          continue
+      #    print " String:", byte,  "    Hex: ", byte.encode('hex')
     if not (in_byte[2] is ' ') :
       ppm += (int(in_byte[2])) * 1000
     if not (in_byte[3] is ' ') :
