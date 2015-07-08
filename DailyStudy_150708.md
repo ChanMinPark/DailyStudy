@@ -7,7 +7,7 @@ http://lifeseed.tistory.com/m/post/94
 라즈베리파이의 UART는 ttyAMA0를 통해 제어된다.  
 그런데, ttyAMA0는 부팅시 설정되어 사용되어서 Port Open이 안된다. 그래서 ttyAMA0를 사용하기 위해서는 먼저 Free 상태로 만들어주는 작업이 필요하다.  
 (1) /boot/cmdline.txt 수정  
-        dwc_otg.lpm_enable=0 console=ttyAMA0,115200 kgdboc=ttyAMA0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline rootwait  
+      dwc_otg.lpm_enable=0 console=ttyAMA0,115200 kgdboc=ttyAMA0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline rootwait  
 (BerePi의 cmdline.txt를 확인해보니 맨 뒤에 ip=169.254.0.2 까지 붙여져 있다.)  
   
 (2) /etc/inittab 수정  
