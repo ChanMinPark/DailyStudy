@@ -35,7 +35,7 @@ SHT20_CMD_RESET = 0xFE  # soft reset
 
 bus = smbus.SMBus(1)    # 0 = /dev/i2c-0 (port I2C0), 1 = /dev/i2c-1 (port I2C1)
 
-DEBUG_PRINT = 1
+DEBUG_PRINT = 0 #1
 SERIAL_READ_BYTE = 12
 FILEMAXBYTE = 1024 * 1024 * 100 #100MB
 LOG_PATH = '/home/pi/log_tos.log'
@@ -45,7 +45,7 @@ CO2LED_GREEN_PIN = 22
 CO2LED_RED_PIN = 27
 
 # important, sensorname shuould be pre-defined, unique sensorname
-sensorname = "co2.test"
+sensorname = "pcm.co2.test"
 
 url = "http://127.0.0.1:4242/api/put"
 
@@ -175,6 +175,7 @@ def main():
       logline = sensorname + ' CO2 Level is '+ str(ppm) + ' ppm' 
       lcd_string('CO2',LCD_LINE_1,2)
       lcd_string('%d ppm' % (ppm),LCD_LINE_2,2)
+      time.sleep(3.5)
       ledall_off()
       if DEBUG_PRINT :
         print logline
@@ -192,21 +193,22 @@ def main():
       print "macAddr : " + macAddr
       
       data = {
-        "metric": "rc1.co2.ppm",
+        "metric": "pcm.co2.ppm",
         "timestamp": time.time(),
         "value": ppm,
         "tags": {
           "eth0": macAddr,
-          "hw": "raspberrypi2" ,
+          "hw": "raspberrypi" ,
           "sensor" : "co2.t110",
           "name" : sensorname,
-          "floor_room": "10fl_min_room",
-          "building": "woosung",
-          "owner": "kang",
+          "floor_room": "5fl_500_room",
+          "building": "keti",
+          "owner": "park",
           "country": "kor"
          }
          #tags should be less than 9, 8 is alright, 9 returns http error
       }
+      ret = requests.post(url, data=json.dumps(data))
     # level = 1, 0~800 ppm,     blue- LED
     # level = 2, 800~1000 ppm,  blue green - LED
     # level = 3, 1000~1300 ppm, green - LED
