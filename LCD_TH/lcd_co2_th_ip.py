@@ -82,30 +82,30 @@ def main():
     time.sleep(2.5) # 3 second delay
 
     #Print eth ip and mac address.
-    str = ip_chk()
-    str = str[:-1]
-    lcd_string('%s ET' %str,LCD_LINE_1,1)
-    str = mac_chk()
-    str = str[:-1]
-    lcd_string('%s' % (str),LCD_LINE_2,1)
+    pstr = ip_chk()
+    pstr = pstr[:-1]
+    lcd_string('%s ET' %pstr,LCD_LINE_1,1)
+    pstr = mac_chk()
+    pstr = pstr[:-1]
+    lcd_string('%s' % (pstr),LCD_LINE_2,1)
     #red_backlight(False) #turn on, yellow
     time.sleep(3.5) # 3 second delay
 
     #Print wlan ip and mac address.
-    str = wip_chk()
-    str = str[:-1]
-    lcd_string('%s WL     ' % (str),LCD_LINE_1,1)
-    str = wmac_chk()
-    str = str[:-1]
-    lcd_string('%s' % (str),LCD_LINE_2,1)
+    pstr = wip_chk()
+    pstr = pstr[:-1]
+    lcd_string('%s WL     ' % (pstr),LCD_LINE_1,1)
+    pstr = wmac_chk()
+    pstr = pstr[:-1]
+    lcd_string('%s' % (pstr),LCD_LINE_2,1)
     #green_backlight(False) #turn on, yellow
     time.sleep(3.5) # 5 second delay
         
     #Print stalk information.
-    str = stalk_chk()
-    str = str[:-1]
+    pstr = stalk_chk()
+    pstr = pstr[:-1]
     lcd_string('sTalk Channel' ,LCD_LINE_1,1)
-    lcd_string('%s           ' % (str),LCD_LINE_2,1)
+    lcd_string('%s           ' % (pstr),LCD_LINE_2,1)
     #red_backlight(False) #turn on, yellow
     time.sleep(3.5) # 5 second delay
     
@@ -172,11 +172,11 @@ def main():
       if not (in_byte[5] is ' ') :
         ppm += (int(in_byte[5]))  
       
-      #logline = sensorname + ' CO2 Level is '+ str(ppm) + ' ppm' 
+      logline = sensorname + ' CO2 Level is '+ str(ppm) + ' ppm' 
       ledall_off()
       if DEBUG_PRINT :
-        #print logline
-        print "%s CO2 Level is %d ppm" %(sensorname, ppm)
+        print logline
+        #print "%s CO2 Level is %d ppm" %(sensorname, ppm)
       if ppm > 2100 : 
         logger.error("%s", logline)
         # cancel insert data into DB, skip.... since PPM is too high,
