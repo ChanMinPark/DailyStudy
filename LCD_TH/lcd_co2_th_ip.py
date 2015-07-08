@@ -24,25 +24,25 @@ import json
 sys.path.append("../BereCO2/lib")
 from co2led import *
 
-SHT20_ADDR = 0x40       # SHT20 register address
-#SHT20_CMD_R_T = 0xE3   # hold Master Mode (Temperature)
-#SHT20_CMD_R_RH = 0xE5  # hold Master Mode (Humidity)
-SHT20_CMD_R_T = 0xF3    # no hold Master Mode (Temperature)
+SHT20_ADDR = 0x40       # SHT20 register address            #SHT20 device address
+#SHT20_CMD_R_T = 0xE3   # hold Master Mode (Temperature)    #hold : SCL is blocked during measurement process
+#SHT20_CMD_R_RH = 0xE5  # hold Master Mode (Humidity)       #no hold : SCL line remains open for other communication
+SHT20_CMD_R_T = 0xF3    # no hold Master Mode (Temperature) #          while the sensor is processing the measurement.
 SHT20_CMD_R_RH = 0xF5   # no hold Master Mode (Humidity)
-#SHT20_WRITE_REG = 0xE6 # write user register 
+#SHT20_WRITE_REG = 0xE6 # write user register               #
 #SHT20_READ_REG = 0xE7  # read user register 
 SHT20_CMD_RESET = 0xFE  # soft reset
 
 bus = smbus.SMBus(1)    # 0 = /dev/i2c-0 (port I2C0), 1 = /dev/i2c-1 (port I2C1)
 
-DEBUG_PRINT = 0 #1
+DEBUG_PRINT = 1
 SERIAL_READ_BYTE = 12
 FILEMAXBYTE = 1024 * 1024 * 100 #100MB
 LOG_PATH = '/home/pi/log_tos.log'
 
-CO2LED_BLUE_PIN = 17
-CO2LED_GREEN_PIN = 22
-CO2LED_RED_PIN = 27
+#CO2LED_BLUE_PIN = 17
+#CO2LED_GREEN_PIN = 22
+#CO2LED_RED_PIN = 27
 
 # important, sensorname shuould be pre-defined, unique sensorname
 sensorname = "pcm.co2.test"
@@ -175,7 +175,6 @@ def main():
       logline = sensorname + ' CO2 Level is '+ str(ppm) + ' ppm' 
       lcd_string('CO2',LCD_LINE_1,2)
       lcd_string('%d ppm' % (ppm),LCD_LINE_2,2)
-      time.sleep(3.5)
       ledall_off()
       if DEBUG_PRINT :
         print logline
@@ -227,6 +226,8 @@ def main():
       ledyellow_on()
     elif ppm >= 1900 :  
       ledpurple_on()
+      
+    time.sleep(3.5)
     ###############################################################
 
 def run_cmd(cmd):
@@ -314,11 +315,11 @@ def getHwAddr(ifname):
 macAddr = getHwAddr('eth0')
 macAddr = macAddr.replace(':','.')
 
-level = 0
-ppm = 0
+#level = 0
+#ppm = 0
 
 # check length, alignment of incoming packet string
-def syncfind():
+"""def syncfind():
     index = 0
     alignment = 0
     while 1:
@@ -335,6 +336,7 @@ def syncfind():
         elif alignment > 0 :
             alignment += 1
         index += 1
+"""
 
 def checkAlignment(incoming):
     idxNum = incoming.find('m')
