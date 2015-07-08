@@ -173,6 +173,8 @@ def main():
         ppm += (int(in_byte[5]))  
       
       logline = sensorname + ' CO2 Level is '+ str(ppm) + ' ppm' 
+      lcd_string('CO2',LCD_LINE_1,2)
+      lcd_string('%d ppm' % (ppm),LCD_LINE_2,2)
       ledall_off()
       if DEBUG_PRINT :
         print logline
