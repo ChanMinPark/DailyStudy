@@ -79,11 +79,11 @@ def hue_putHue(light, hue):
 def hue_alert(light, mode):
 	halert={}
 	if mode is 0:
-		halert['alert']=none
+		halert['alert']="none"
 	elif mode is 1:
-		halert['alert']=select
+		halert['alert']="select"
 	elif mode is 2:
-		halert['alert']=lselect
+		halert['alert']="lselect"
 	halert = json.dumps(halert)
 
 	conn.request("PUT","/api/newdeveloper/lights/"+str(light)+"/state", halert)
