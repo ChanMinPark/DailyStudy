@@ -17,7 +17,7 @@ def main():
 
   for lightnum in lights:
     hue_off(lightnum)
-    time.sleep(2)
+    time.sleep(5)
   time.sleep(3)
   
   for lightnum in lights:
@@ -29,12 +29,12 @@ def main():
   
   for lightnum in lights:
     hue_off(lightnum)
-  time.sleep(2)
+  time.sleep(5)
   
   for lightnum in lights:
     hue_on(lightnum)
     hue_alert(lightnum, 2)
-  time.sleep(5)
+  time.sleep(15)
   for lightnum in lights:
     hue_alert(lightnum, 0)
   
