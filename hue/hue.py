@@ -86,10 +86,10 @@ def getState(light):
 	data = raw_data
 
 	ret =[]
-	ret.append(data['name'])
-	ret.append(data['state']['on'])
-	ret.append(data['state']['bri'])
-	ret.append(data['state']['hue'])
-	ret.append(data['state']['sat'])
+	ret.append(str(data['name']))
+	ret.append(str(data['state']['on']))
+	ret.append(str(data['state']['bri']))
+	ret.append(str(data['state']['hue']))
+	ret.append(str(data['state']['sat']))
 	
-	return ret	
+	return ret
