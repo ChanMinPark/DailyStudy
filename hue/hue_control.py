@@ -41,6 +41,7 @@ def main():
     hue_alert(lightnum, 0)
   
   for lightnum in lights:
+    hue_putSat(lightnum,255)
     random_bri = random.randrange(0,65535) #0~65535 사이의 정수 랜덤으로 출력
     hue_putHue(lightnum, random_bri)
   
