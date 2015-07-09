@@ -22,6 +22,7 @@ def main():
   
   for lightnum in lights:
     hue_on(lightnum)
+    hue_putSat(lightnum,255)
     hue_effect(lightnum, 1)
   time.sleep(15)
   for lightnum in lights:
