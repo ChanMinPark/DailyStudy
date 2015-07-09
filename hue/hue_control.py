@@ -22,5 +22,13 @@ def main():
   print getState(2)
   time.sleep(5)
   
+  hue_effect(2, 1)
+  print getState(2)
+  time.sleep(5)
+  
+  hue_effect(2, 0)
+  print getState(2)
+  time.sleep(5)
+  
 if __name__ == '__main__':
   main()
