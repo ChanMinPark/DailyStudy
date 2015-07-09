@@ -14,7 +14,13 @@ def main():
   hue_putHue(2, 43210)
   time.sleep(5)
   
+  hue_alert(2 """light""", 1 """mode""" )
   print getState(2)
+  time.sleep(5)
+  
+  hue_alert(2 """light""", 0 """mode""" )
+  print getState(2)
+  time.sleep(5)
   
 if __name__ == '__main__':
   main()
