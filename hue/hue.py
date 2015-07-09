@@ -94,6 +94,23 @@ def hue_alert(light, mode):
 		return True
 	else:
 		return False
+		
+def hue_effect(light, mode):
+	heffect={}
+	if mode is 0:
+		heffect['effect']="none"
+	elif mode is 1:
+		heffect['effect']="colorloop"
+	heffect = json.dumps(heffect)
+
+	conn.request("PUT","/api/newdeveloper/lights/"+str(light)+"/state", heffect)
+	response = conn.getresponse()
+	data = response.read()
+
+	if data[3:10] is "success":
+		return True
+	else:
+		return False
 
 #Hue 상태 가져오기 json객체 작성중
 def getState(light):
@@ -109,5 +126,6 @@ def getState(light):
 	ret.append(str(data['state']['hue']))
 	ret.append(str(data['state']['sat']))
 	ret.append(str(data['state']['alert']))
+	ret.append(str(data['state']['effect']))
 	
 	return ret
