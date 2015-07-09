@@ -76,7 +76,24 @@ def hue_putHue(light, hue):
 	else:
 		return False
 
+def hue_alert(light, mode):
+	halert={}
+	if mode is 0:
+		halert['alert']=none
+	elif mode is 1:
+		halert['alert']=select
+	elif mode is 2:
+		halert['alert']=lselect
+	halert = json.dumps(halert)
 
+	conn.request("PUT","/api/newdeveloper/lights/"+str(light)+"/state", halert)
+	response = conn.getresponse()
+	data = response.read()
+
+	if data[3:10] is "success":
+		return True
+	else:
+		return False
 
 #Hue 상태 가져오기 json객체 작성중
 def getState(light):
@@ -91,5 +108,6 @@ def getState(light):
 	ret.append(str(data['state']['bri']))
 	ret.append(str(data['state']['hue']))
 	ret.append(str(data['state']['sat']))
+	ret.append(str(data['state']['alert']))
 	
 	return ret
