@@ -16,7 +16,7 @@ def main():
   
   hue_alert(2, 2)
   print getState(2)
-  time.sleep(5)
+  time.sleep(15)
   
   hue_alert(2, 0)
   print getState(2)
@@ -24,7 +24,7 @@ def main():
   
   hue_effect(2, 1)
   print getState(2)
-  time.sleep(5)
+  time.sleep(15)
   
   hue_effect(2, 0)
   print getState(2)
