@@ -14,5 +14,7 @@ def main():
   hue_putHue(2, 43210)
   time.sleep(5)
   
+  print getState(2)
+  
 if __name__ == '__main__':
   main()
