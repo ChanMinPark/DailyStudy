@@ -9,7 +9,7 @@ def main():
   
   for lightnum in lights:
     print getState(lightnum)
-  time.sleep(2)
+  time.sleep(7)
   
   for lightnum in lights:
     hue_putHue(lightnum,0)
@@ -34,8 +34,9 @@ def main():
   
   for lightnum in lights:
     hue_on(lightnum)
+    hue_putSat(lightnum,0)
     hue_alert(lightnum, 2)
-  time.sleep(15)
+  time.sleep(10)
   for lightnum in lights:
     hue_alert(lightnum, 0)
   
