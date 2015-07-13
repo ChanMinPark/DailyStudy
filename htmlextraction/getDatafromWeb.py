@@ -40,14 +40,17 @@ def getBaseBallRank():
 		
 	for record in record_after:
 		print "Team Name : %s" %(record['teamName'])
+		name_text = "%s" %(record['teamName'])
 		if record['rank'] == "1":
 			print "%sst (%swin-%slost-%sdrawn)" %(record['rank'],record['won'],record['lost'],record['drawn'])
+			info_text = "%sst (%swin-%slost-%sdrawn)" %(record['rank'],record['won'],record['lost'],record['drawn'])
 		elif (record['rank'] == "2")|(record['rank'] == "3"):
 			print "%snd (%swin-%slost-%sdrawn)" %(record['rank'],record['won'],record['lost'],record['drawn'])
+			info_text = "%snd (%swin-%slost-%sdrawn)" %(record['rank'],record['won'],record['lost'],record['drawn'])
 		else:
 			print "%sth (%swin-%slost-%sdrawn)" %(record['rank'],record['won'],record['lost'],record['drawn'])
-		info_text = "%sst (%swin-%slost-%sdrawn)" %(record['rank'],record['won'],record['lost'],record['drawn'])
-		printTeaminfo(record['teamName'], info_text)
+			info_text = "%sth (%swin-%slost-%sdrawn)" %(record['rank'],record['won'],record['lost'],record['drawn'])
+		printTeaminfo(name_text, info_text)
 		time.sleep(5)
 
 def teamName(teamcode):
