@@ -16,6 +16,7 @@ def printTeaminfo(name, info):
 		info = info[1:]
 		info += temp_info
 		time.sleep(1)
+		index += 1
         
 #####################################################################################
 
@@ -84,6 +85,13 @@ def teamName(teamcode):
 
 if __name__ == '__main__':
 	lcd_init()
-	while True:
-		getBaseBallRank()
+	try:
+		while True:
+			getBaseBallRank()
+	except KeyboardInterrupt:
+		pass
+	finally:
+		lcd_byte(0x01, LCD_CMD)
+		lcd_string("Goodbye!",LCD_LINE_1,2)
+		GPIO.cleanup()
 	
