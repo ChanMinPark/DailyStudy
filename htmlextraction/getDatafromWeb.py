@@ -7,7 +7,7 @@ def getBaseBallRank():
 	
 	teamrecord = text.split('var jsonTeamRecord')[1].split('var teamCount')[0].split(':[')[1].split('},{')
 	
-	for record in teamrecord
+	for record in teamrecord:
 		print record
 		print " "
 
