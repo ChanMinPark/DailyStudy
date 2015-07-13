@@ -9,10 +9,14 @@ from lcd import *
 #####################################################################################
 def printTeaminfo(name, info):
 	lcd_string('%s' %(name), LCD_LINE_1,2)
-	lcd_string('%s' %(info), LCD_LINE_2,1)
-	#temp_info = info[:1]
-	#info = info[1:]
-        #info += temp_info
+	index = 0
+	while index <= len(info):
+		lcd_string('%s' %(info), LCD_LINE_2,1)
+		temp_info = info[:1]
+		info = info[1:]
+		info += temp_info
+		time.sleep(1)
+        
 #####################################################################################
 
 
@@ -51,7 +55,7 @@ def getBaseBallRank():
 			print "%sth (%swin-%slost-%sdrawn)" %(record['rank'],record['won'],record['lost'],record['drawn'])
 			info_text = record['rank']+"th ("+record['won']+"win-"+record['lost']+"lost-"+record['drawn']+"drawn)"
 		printTeaminfo(name_text, info_text)
-		time.sleep(5)
+		time.sleep(len(info_text)+1)
 
 def teamName(teamcode):
 	if teamcode == "SS":
@@ -80,5 +84,6 @@ def teamName(teamcode):
 
 if __name__ == '__main__':
 	lcd_init()
-	getBaseBallRank()
+	while True:
+		getBaseBallRank()
 	
