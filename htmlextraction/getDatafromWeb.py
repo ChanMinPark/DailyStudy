@@ -42,11 +42,12 @@ def getBaseBallRank():
 		print "Team Name : %s" %(record['teamName'])
 		if record['rank'] == "1":
 			print "%sst (%swin-%slost-%sdrawn)" %(record['rank'],record['won'],record['lost'],record['drawn'])
-		if (record['rank'] == "2")|(record['rank'] == "3"):
+		elif (record['rank'] == "2")|(record['rank'] == "3"):
 			print "%snd (%swin-%slost-%sdrawn)" %(record['rank'],record['won'],record['lost'],record['drawn'])
 		else:
 			print "%sth (%swin-%slost-%sdrawn)" %(record['rank'],record['won'],record['lost'],record['drawn'])
-		printTeaminfo(record['teamName'], "%sst (%swin-%slost-%sdrawn)" %(record['rank'],record['won'],record['lost'],record['drawn']))
+		info_text = "%sst (%swin-%slost-%sdrawn)" %(record['rank'],record['won'],record['lost'],record['drawn'])
+		printTeaminfo(record['teamName'], info_text)
 		time.sleep(5)
 
 def teamName(teamcode):
