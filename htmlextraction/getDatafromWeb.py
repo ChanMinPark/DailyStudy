@@ -14,18 +14,23 @@ def getBaseBallRank():
 	record_after = []
 
 	for record in teamrecord:
-		print record.split(',')[3].split(':')[1][1:3]
 		data = {}
 		data['teamName'] = teamName(record.split(',')[3].split(':')[1][1:3])
 		data['play'] = record.split(',')[10].split(':')[1]
 		data['won'] = record.split(',')[8].split(':')[1]
 		data['lost'] = record.split(',')[2].split(':')[1]
 		data['drawn'] = record.split(',')[11].split(':')[1]
+		data['rank'] = record.split(',')[5].split(':')[1]
 		record_after.append(data)
 		
 	for record in record_after:
-		print record
-		print " "
+		print "Team Name : %s" %(record['teamName'])
+		if record['rank'] == 1:
+			print "%sst (%s-%s-%s)" %(record['rank'],record['won'],record['lost'],record['drawn'])
+		if (record['rank'] == 2)|(record['rank'] == 3):
+			print "%snd (%s-%s-%s)" %(record['rank'],record['won'],record['lost'],record['drawn'])
+		else:
+			print "%sth (%s-%s-%s)" %(record['rank'],record['won'],record['lost'],record['drawn'])
 
 def teamName(teamcode):
 	if teamcode == "SS":
