@@ -19,7 +19,30 @@ def printTeaminfo(name, info):
 		info += temp_info
 		time.sleep(1)
 		index += 1
-        
+
+def printLCDColor(name):
+	if name == "Samsung Lions":
+		blueLCDon()
+	elif name == "NC Dinos":
+		skyeLCDon()
+	elif name == "Doosan Bears":
+		whiteLCDon()
+	elif name == "Nexen Heroes":
+		redLCDon()
+	elif name == "HanHwa Eagles":
+		yellowLCDon()
+	elif name == "SK Wyvern":
+		skyeLCDon()
+	elif name == "Kia Tigers":
+		pinkLCDon()
+	elif name == "Lotte Giants":
+		greenLCDon()
+	elif name == "LG Twins":
+		redLCDon()
+	elif name == "KT Wiz":
+		whiteLCDon()
+	else:
+		whiteLCDon()
 #####################################################################################
 
 
@@ -48,6 +71,7 @@ def getBaseBallRank():
 	for record in record_after:
 		print "Team Name : %s" %(record['teamName'])
 		name_text = record['teamName']
+		printLCDColor(name_text)
 		if record['rank'] == "1":
 			print "%sst (%swin-%slost-%sdrawn)" %(record['rank'],record['won'],record['lost'],record['drawn'])
 			info_text = record['rank']+"st ("+record['won']+"win-"+record['lost']+"lost-"+record['drawn']+"drawn)"
