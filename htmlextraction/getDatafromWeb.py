@@ -1,7 +1,7 @@
 import urllib2
 
 def getBaseBallRank():
-  page = urllib2.urlopen("http://sports.news.naver.com/record/index.nhn?uCategory=kbaseball&category=kbo")
+	page = urllib2.urlopen("http://sports.news.naver.com/record/index.nhn?uCategory=kbaseball&category=kbo")
 	text = page.read()
 	#print text
 	
