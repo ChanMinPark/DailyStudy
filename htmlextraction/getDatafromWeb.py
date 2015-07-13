@@ -1,4 +1,19 @@
+#  For BaseBall Data
 import urllib2
+#  For LCD connection
+import sys
+from lcd import *
+
+#####################################################################################
+#########################  For BaseBall Data  #######################################
+#####################################################################################
+def printTeaminfo(name, info):
+	lcd_string('%s' %(name), LCD_LINE_1,2)
+	lcd_string('%s' %(info), LCD_LINE_2,1)
+	#temp_info = info[:1]
+	#info = info[1:]
+        #info += temp_info
+#####################################################################################
 
 
 #####################################################################################
@@ -25,12 +40,14 @@ def getBaseBallRank():
 		
 	for record in record_after:
 		print "Team Name : %s" %(record['teamName'])
-		if record['rank'] == 1:
-			print "%sst (%s-%s-%s)" %(record['rank'],record['won'],record['lost'],record['drawn'])
-		if (record['rank'] == 2)|(record['rank'] == 3):
-			print "%snd (%s-%s-%s)" %(record['rank'],record['won'],record['lost'],record['drawn'])
+		if record['rank'] == "1":
+			print "%sst (%swin-%slost-%sdrawn)" %(record['rank'],record['won'],record['lost'],record['drawn'])
+		if (record['rank'] == "2")|(record['rank'] == "3"):
+			print "%snd (%swin-%slost-%sdrawn)" %(record['rank'],record['won'],record['lost'],record['drawn'])
 		else:
-			print "%sth (%s-%s-%s)" %(record['rank'],record['won'],record['lost'],record['drawn'])
+			print "%sth (%swin-%slost-%sdrawn)" %(record['rank'],record['won'],record['lost'],record['drawn'])
+		printTeaminfo(record['teamName'], "%sst (%swin-%slost-%sdrawn)" %(record['rank'],record['won'],record['lost'],record['drawn']))
+		time.sleep(5)
 
 def teamName(teamcode):
 	if teamcode == "SS":
