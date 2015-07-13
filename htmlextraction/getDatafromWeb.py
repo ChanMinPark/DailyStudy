@@ -20,7 +20,7 @@ def getBaseBallRank():
 		record_after[i]['won'] = record.split(',')[8].split(':')[1]
 		record_after[i]['lost'] = record.split(',')[2].split(':')[1]
 		record_after[i]['drawn'] = record.split(',')[11].split(':')[1]
-		i++
+		i += 1
 		
 	for record in record_after:
 		print record
