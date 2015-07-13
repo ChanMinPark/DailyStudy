@@ -9,8 +9,10 @@ from lcd import *
 #####################################################################################
 def printTeaminfo(name, info):
 	lcd_string('%s' %(name), LCD_LINE_1,2)
+	lcd_string('%s' %(info), LCD_LINE_2,1)
+	time.sleep(2)
 	index = 0
-	while index <= len(info):
+	while index <= (len(info)-16):
 		lcd_string('%s' %(info), LCD_LINE_2,1)
 		temp_info = info[:1]
 		info = info[1:]
