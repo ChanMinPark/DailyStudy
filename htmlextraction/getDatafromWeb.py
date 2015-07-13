@@ -56,7 +56,7 @@ def getBaseBallRank():
 			print "%sth (%swin-%slost-%sdrawn)" %(record['rank'],record['won'],record['lost'],record['drawn'])
 			info_text = record['rank']+"th ("+record['won']+"win-"+record['lost']+"lost-"+record['drawn']+"drawn)"
 		printTeaminfo(name_text, info_text)
-		time.sleep(len(info_text)+1)
+		time.sleep(1)
 
 def teamName(teamcode):
 	if teamcode == "SS":
