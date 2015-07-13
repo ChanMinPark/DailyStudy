@@ -12,41 +12,44 @@ def getBaseBallRank():
 	teamrecord = text.split('var jsonTeamRecord')[1].split('var teamCount')[0].split(':[{')[1].split('},{')
 		
 	record_after = []
-	i = 0
+
 	for record in teamrecord:
-		record_after[i] = {}
-		record_after[i]['teamName'] = teamName(record.split(',')[3].split(':')[1][1:2])
-		record_after[i]['play'] = record.split(',')[10].split(':')[1]
-		record_after[i]['won'] = record.split(',')[8].split(':')[1]
-		record_after[i]['lost'] = record.split(',')[2].split(':')[1]
-		record_after[i]['drawn'] = record.split(',')[11].split(':')[1]
-		i += 1
+		print record.split(',')[3].split(':')[1][1:3]
+		data = {}
+		data['teamName'] = teamName(record.split(',')[3].split(':')[1][1:3])
+		data['play'] = record.split(',')[10].split(':')[1]
+		data['won'] = record.split(',')[8].split(':')[1]
+		data['lost'] = record.split(',')[2].split(':')[1]
+		data['drawn'] = record.split(',')[11].split(':')[1]
+		record_after.append(data)
 		
 	for record in record_after:
 		print record
 		print " "
 
 def teamName(teamcode):
-	if teamcode is "SS":
+	if teamcode == "SS":
 		return "Samsung Lions"
-	elif teamcode is "NC":
+	elif teamcode == "NC":
 		return "NC Dinos"
-	elif teamcode is "OB":
+	elif teamcode == "OB":
 		return "Doosan Bears"
-	elif teamcode is "WO":
+	elif teamcode == "WO":
 		return "Nexen Heroes"
-	elif teamcode is "HH":
+	elif teamcode == "HH":
 		return "HanHwa Eagles"
-	elif teamcode is "SK":
+	elif teamcode == "SK":
 		return "SK Wyverns"
-	elif teamcode is "HT":
+	elif teamcode == "HT":
 		return "Kia Tigers"
-	elif teamcode is "LT":
+	elif teamcode == "LT":
 		return "Lotte Giants"
-	elif teamcode is "LG":
+	elif teamcode == "LG":
 		return "LG Twins"
-	elif teamcode is "KT":
+	elif teamcode == "KT":
 		return "KT Wiz"
+	else:
+		return "default"
 #####################################################################################
 
 if __name__ == '__main__':
