@@ -3,6 +3,9 @@ sys.path.append("../lcd_berepi/lib")
 from lcd import *
 
 def main():
+  # Initialise display
+  lcd_init()
+  
   content = "Hello World! Have a nice day~"
   while True:
     lcd_string('%s' %(content), LCD_LINE_1,1)
