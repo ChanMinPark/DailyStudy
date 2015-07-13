@@ -5,7 +5,11 @@ def getBaseBallRank():
 	text = page.read()
 	#print text
 	
-	print text.split('var jsonTeamRecord')[1].split('var teamCount')[0]
+	teamrecord = text.split('var jsonTeamRecord')[1].split('var teamCount')[0].split(':[')[1].split('},{')
+	
+	for record in teamrecord
+		print record
+		print " "
 
 if __name__ == '__main__':
 	getBaseBallRank()
