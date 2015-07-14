@@ -13,25 +13,25 @@ def playTeamSong(name):
 	if name == "Samsung Lions":
 		song = pyglet.media.load('samsung_song.mp3')
 	elif name == "NC Dinos":
-		#song = pyglet.media.load('')
+		song = pyglet.media.load('samsung_song.mp3')
 	elif name == "Doosan Bears":
-		#song = pyglet.media.load('')
+		song = pyglet.media.load('samsung_song.mp3')
 	elif name == "Nexen Heroes":
-		#song = pyglet.media.load('')
+		song = pyglet.media.load('samsung_song.mp3')
 	elif name == "HanHwa Eagles":
-		#song = pyglet.media.load('')
+		song = pyglet.media.load('samsung_song.mp3')
 	elif name == "SK Wyvern":
-		#song = pyglet.media.load('')
+		song = pyglet.media.load('samsung_song.mp3')
 	elif name == "Kia Tigers":
-		#song = pyglet.media.load('')
+		song = pyglet.media.load('samsung_song.mp3')
 	elif name == "Lotte Giants":
-		#song = pyglet.media.load('')
+		song = pyglet.media.load('samsung_song.mp3')
 	elif name == "LG Twins":
-		#song = pyglet.media.load('')
+		song = pyglet.media.load('samsung_song.mp3')
 	elif name == "KT Wiz":
-		#song = pyglet.media.load('')
+		song = pyglet.media.load('samsung_song.mp3')
 	else:
-		#song = pyglet.media.load('')
+		song = pyglet.media.load('samsung_song.mp3')
 
 	song.play()
 	pyglet.app.run()
