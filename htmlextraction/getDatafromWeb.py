@@ -4,37 +4,44 @@ import urllib2
 import sys
 from lcd import *
 #  For Audio play
-import pyglet
+import pygame
 
 #####################################################################################
 #########################  For Audio play  ##########################################
 #####################################################################################
 def playTeamSong(name):
-	if name == "Samsung Lions":
-		song = pyglet.media.load('samsung_song.mp3')
-	elif name == "NC Dinos":
-		song = pyglet.media.load('samsung_song.mp3')
-	elif name == "Doosan Bears":
-		song = pyglet.media.load('samsung_song.mp3')
-	elif name == "Nexen Heroes":
-		song = pyglet.media.load('samsung_song.mp3')
-	elif name == "HanHwa Eagles":
-		song = pyglet.media.load('samsung_song.mp3')
-	elif name == "SK Wyvern":
-		song = pyglet.media.load('samsung_song.mp3')
-	elif name == "Kia Tigers":
-		song = pyglet.media.load('samsung_song.mp3')
-	elif name == "Lotte Giants":
-		song = pyglet.media.load('samsung_song.mp3')
-	elif name == "LG Twins":
-		song = pyglet.media.load('samsung_song.mp3')
-	elif name == "KT Wiz":
-		song = pyglet.media.load('samsung_song.mp3')
-	else:
-		song = pyglet.media.load('samsung_song.mp3')
-
-	song.play()
-	pyglet.app.run()
+	try:
+		if pygame.mixer.music.get_busy() == True:
+			pygame.mixer.music.stop()
+		#pygame.mixer.init()
+		if name == "Samsung Lions":
+			song = pygame.mixer.music.Sound("samsung_song.mp3")
+		elif name == "NC Dinos":
+			song = pygame.mixer.music.Sound("samsung_song.mp3")
+		elif name == "Doosan Bears":
+			song = pygame.mixer.music.Sound("samsung_song.mp3")
+		elif name == "Nexen Heroes":
+			song = pygame.mixer.music.Sound("samsung_song.mp3")
+		elif name == "HanHwa Eagles":
+			song = pygame.mixer.music.Sound("samsung_song.mp3")
+		elif name == "SK Wyvern":
+			song = pygame.mixer.music.Sound("samsung_song.mp3")
+		elif name == "Kia Tigers":
+			song = pygame.mixer.music.Sound("samsung_song.mp3")
+		elif name == "Lotte Giants":
+			song = pygame.mixer.music.Sound("samsung_song.mp3")
+		elif name == "LG Twins":
+			song = pygame.mixer.music.Sound("samsung_song.mp3")
+		elif name == "KT Wiz":
+			song = pygame.mixer.music.Sound("samsung_song.mp3")
+		else:
+			song = pygame.mixer.music.Sound("samsung_song.mp3")
+		
+		song.play()
+		#pygame.mixer.quit()
+	except KeyboardInterrupt:
+		pass
+	
 #####################################################################################
 
 #####################################################################################
@@ -145,12 +152,14 @@ def teamName(teamcode):
 
 if __name__ == '__main__':
 	lcd_init()
+	pygame.mixer.init()
 	try:
 		while True:
 			getBaseBallRank()
 	except KeyboardInterrupt:
 		pass
 	finally:
+		pygame.mixer.quit()
 		lcd_byte(0x01, LCD_CMD)
 		lcd_string("Goodbye!",LCD_LINE_1,2)
 		GPIO.cleanup()
