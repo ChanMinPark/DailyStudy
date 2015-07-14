@@ -3,6 +3,39 @@ import urllib2
 #  For LCD connection
 import sys
 from lcd import *
+#  For Audio play
+import pyglet
+
+#####################################################################################
+#########################  For Audio play  ##########################################
+#####################################################################################
+def playTeamSong(name):
+	if name == "Samsung Lions":
+		song = pyglet.media.load('samsung_song.mp3')
+	elif name == "NC Dinos":
+		#song = pyglet.media.load('')
+	elif name == "Doosan Bears":
+		#song = pyglet.media.load('')
+	elif name == "Nexen Heroes":
+		#song = pyglet.media.load('')
+	elif name == "HanHwa Eagles":
+		#song = pyglet.media.load('')
+	elif name == "SK Wyvern":
+		#song = pyglet.media.load('')
+	elif name == "Kia Tigers":
+		#song = pyglet.media.load('')
+	elif name == "Lotte Giants":
+		#song = pyglet.media.load('')
+	elif name == "LG Twins":
+		#song = pyglet.media.load('')
+	elif name == "KT Wiz":
+		#song = pyglet.media.load('')
+	else:
+		#song = pyglet.media.load('')
+
+	song.play()
+	pyglet.app.run()
+#####################################################################################
 
 #####################################################################################
 #########################  For BaseBall Data  #######################################
@@ -82,6 +115,7 @@ def getBaseBallRank():
 			print "%sth (%swin-%slost-%sdrawn)" %(record['rank'],record['won'],record['lost'],record['drawn'])
 			info_text = record['rank']+"th ("+record['won']+"win-"+record['lost']+"lost-"+record['drawn']+"drawn)"
 		printTeaminfo(name_text, info_text)
+		playTeamSong(name_text)
 		time.sleep(1)
 
 def teamName(teamcode):
