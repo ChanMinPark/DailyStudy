@@ -17,17 +17,17 @@ def playTeamSong(name):
 		if name == "Samsung Lions":
 			pygame.mixer.music.load("samsung_song.mp3")
 		elif name == "NC Dinos":
-			pygame.mixer.music.load("samsung_song.mp3")
+			pygame.mixer.music.load("nc_song.mp3")
 		elif name == "Doosan Bears":
-			pygame.mixer.music.load("samsung_song.mp3")
+			pygame.mixer.music.load("doosan_song.mp3")
 		elif name == "Nexen Heroes":
-			pygame.mixer.music.load("samsung_song.mp3")
+			pygame.mixer.music.load("nexen_song.mp3")
 		elif name == "HanHwa Eagles":
 			pygame.mixer.music.load("samsung_song.mp3")
 		elif name == "SK Wyvern":
 			pygame.mixer.music.load("samsung_song.mp3")
 		elif name == "Kia Tigers":
-			pygame.mixer.music.load("samsung_song.mp3")
+			pygame.mixer.music.load("kia_song.mp3")
 		elif name == "Lotte Giants":
 			pygame.mixer.music.load("samsung_song.mp3")
 		elif name == "LG Twins":
