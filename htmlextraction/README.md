@@ -28,8 +28,8 @@ https://github.com/ChanMinPark/DailyStudy/blob/master/htmlextraction/getDatafrom
 ####**4.결과 화면**  
 순위 정보는 LCD에 (팀명, 순위, 승-패-무)가 표시되며 팀마다 각기 다른 색으로 표시된다.  
 순위와 승-패-무 는 길이가 길기때문에 흐르는 텍스트를 이용하여 모든 부분이 전부 표시된후 다음 팀을 표시한다.  
-![](RefImage/baseballrank_1.jpg)  
-![](RefImage/baseballrank_2.jpg)  
-![](RefImage/baseballrank_3.jpg)  
-![](RefImage/baseballrank_4.jpg)  
+![](../RefImage/baseballrank_1.jpg)  
+![](../RefImage/baseballrank_2.jpg)  
+![](../RefImage/baseballrank_3.jpg)  
+![](../RefImage/baseballrank_4.jpg)  
   
