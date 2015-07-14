@@ -3,6 +3,46 @@ import urllib2
 #  For LCD connection
 import sys
 from lcd import *
+#  For Audio play
+import pygame
+
+#####################################################################################
+#########################  For Audio play  ##########################################
+#####################################################################################
+def playTeamSong(name):
+	try:
+		if pygame.mixer.get_busy() == True:
+			pygame.mixer.stop()
+		#pygame.mixer.init()
+		if name == "Samsung Lions":
+			pygame.mixer.music.load("samsung_song.mp3")
+		elif name == "NC Dinos":
+			pygame.mixer.music.load("samsung_song.mp3")
+		elif name == "Doosan Bears":
+			pygame.mixer.music.load("samsung_song.mp3")
+		elif name == "Nexen Heroes":
+			pygame.mixer.music.load("samsung_song.mp3")
+		elif name == "HanHwa Eagles":
+			pygame.mixer.music.load("samsung_song.mp3")
+		elif name == "SK Wyvern":
+			pygame.mixer.music.load("samsung_song.mp3")
+		elif name == "Kia Tigers":
+			pygame.mixer.music.load("samsung_song.mp3")
+		elif name == "Lotte Giants":
+			pygame.mixer.music.load("samsung_song.mp3")
+		elif name == "LG Twins":
+			pygame.mixer.music.load("samsung_song.mp3")
+		elif name == "KT Wiz":
+			pygame.mixer.music.load("samsung_song.mp3")
+		else:
+			pygame.mixer.music.load("samsung_song.mp3")
+		pygame.mixer.music.set_volume(0.2)
+		pygame.mixer.music.play()
+		#pygame.mixer.quit()
+	except KeyboardInterrupt:
+		pass
+	
+#####################################################################################
 
 #####################################################################################
 #########################  For BaseBall Data  #######################################
@@ -81,6 +121,7 @@ def getBaseBallRank():
 		else:
 			print "%sth (%swin-%slost-%sdrawn)" %(record['rank'],record['won'],record['lost'],record['drawn'])
 			info_text = record['rank']+"th ("+record['won']+"win-"+record['lost']+"lost-"+record['drawn']+"drawn)"
+		playTeamSong(name_text)
 		printTeaminfo(name_text, info_text)
 		time.sleep(1)
 
@@ -111,12 +152,14 @@ def teamName(teamcode):
 
 if __name__ == '__main__':
 	lcd_init()
+	pygame.mixer.init()
 	try:
 		while True:
 			getBaseBallRank()
 	except KeyboardInterrupt:
 		pass
 	finally:
+		pygame.mixer.quit()
 		lcd_byte(0x01, LCD_CMD)
 		lcd_string("Goodbye!",LCD_LINE_1,2)
 		GPIO.cleanup()
