@@ -11,31 +11,31 @@ import pygame
 #####################################################################################
 def playTeamSong(name):
 	try:
-		if pygame.mixer.music.get_busy() == True:
-			pygame.mixer.music.stop()
+		if pygame.mixer.get_busy() == True:
+			pygame.mixer.stop()
 		#pygame.mixer.init()
 		if name == "Samsung Lions":
-			song = pygame.mixer.music.Sound("samsung_song.mp3")
+			song = pygame.mixer.Sound("samsung_song.mp3")
 		elif name == "NC Dinos":
-			song = pygame.mixer.music.Sound("samsung_song.mp3")
+			song = pygame.mixer.Sound("samsung_song.mp3")
 		elif name == "Doosan Bears":
-			song = pygame.mixer.music.Sound("samsung_song.mp3")
+			song = pygame.mixer.Sound("samsung_song.mp3")
 		elif name == "Nexen Heroes":
-			song = pygame.mixer.music.Sound("samsung_song.mp3")
+			song = pygame.mixer.Sound("samsung_song.mp3")
 		elif name == "HanHwa Eagles":
-			song = pygame.mixer.music.Sound("samsung_song.mp3")
+			song = pygame.mixer.Sound("samsung_song.mp3")
 		elif name == "SK Wyvern":
-			song = pygame.mixer.music.Sound("samsung_song.mp3")
+			song = pygame.mixer.Sound("samsung_song.mp3")
 		elif name == "Kia Tigers":
-			song = pygame.mixer.music.Sound("samsung_song.mp3")
+			song = pygame.mixer.Sound("samsung_song.mp3")
 		elif name == "Lotte Giants":
-			song = pygame.mixer.music.Sound("samsung_song.mp3")
+			song = pygame.mixer.Sound("samsung_song.mp3")
 		elif name == "LG Twins":
-			song = pygame.mixer.music.Sound("samsung_song.mp3")
+			song = pygame.mixer.Sound("samsung_song.mp3")
 		elif name == "KT Wiz":
-			song = pygame.mixer.music.Sound("samsung_song.mp3")
+			song = pygame.mixer.Sound("samsung_song.mp3")
 		else:
-			song = pygame.mixer.music.Sound("samsung_song.mp3")
+			song = pygame.mixer.Sound("samsung_song.mp3")
 		
 		song.play()
 		#pygame.mixer.quit()
