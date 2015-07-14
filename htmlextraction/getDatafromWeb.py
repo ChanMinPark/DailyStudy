@@ -36,7 +36,7 @@ def playTeamSong(name):
 			pygame.mixer.music.load("samsung_song.mp3")
 		else:
 			pygame.mixer.music.load("samsung_song.mp3")
-		
+		pygame.mixer.music.set_volume(0.2)
 		pygame.mixer.music.play()
 		#pygame.mixer.quit()
 	except KeyboardInterrupt:
