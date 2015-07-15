@@ -8,7 +8,7 @@ def on_tag(bus, msg):
         print '\t%s = %s' % (key, taglist[key])
 
 #our stream to play
-music_stream_uri = 'https://github.com/ChanMinPark/DailyStudy/blob/master/htmlextraction/samsung_song.mp3'
+music_stream_uri = 'http://mp3channels.webradio.antenne.de/chillout'
 
 #creates a playbin (plays media form an uri) 
 player = gst.element_factory_make("playbin", "player")
