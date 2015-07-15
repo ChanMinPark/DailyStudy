@@ -1,3 +1,5 @@
+#Author : ChanMin Park, https://github.com/ChanMinPark
+
 #  For BaseBall Data
 import urllib2
 #  For LCD connection
@@ -27,7 +29,7 @@ def playTeamSong(name):
 		elif name == "SK Wyvern":
 			pygame.mixer.music.load("samsung_song.mp3")
 		elif name == "Kia Tigers":
-			pygame.mixer.music.load("kia_song.mp3")
+			pygame.mixer.music.load("kia_song.wav")
 		elif name == "Lotte Giants":
 			pygame.mixer.music.load("samsung_song.mp3")
 		elif name == "LG Twins":
@@ -36,7 +38,7 @@ def playTeamSong(name):
 			pygame.mixer.music.load("samsung_song.mp3")
 		else:
 			pygame.mixer.music.load("samsung_song.mp3")
-		pygame.mixer.music.set_volume(0.2)
+		pygame.mixer.music.set_volume(0.1)
 		pygame.mixer.music.play()
 		#pygame.mixer.quit()
 	except KeyboardInterrupt:
