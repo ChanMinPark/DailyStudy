@@ -17,7 +17,8 @@ def playTeamSong(name):
 			pygame.mixer.stop()
 		#pygame.mixer.init()
 		if name == "Samsung Lions":
-			pygame.mixer.music.load("samsung_song.mp3")
+			#pygame.mixer.music.load("samsung_song.mp3")
+			pygame.mixer.music.load("https://github.com/ChanMinPark/DailyStudy/blob/master/htmlextraction/samsung_song.mp3")
 		elif name == "NC Dinos":
 			pygame.mixer.music.load("nc_song.mp3")
 		elif name == "Doosan Bears":
