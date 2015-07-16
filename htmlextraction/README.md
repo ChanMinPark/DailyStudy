@@ -28,7 +28,7 @@ https://github.com/ChanMinPark/DailyStudy/blob/master/htmlextraction/getDatafrom
 
 ####**4. 팀 응원가 재생**  
 우선, 음원 파일을 py파일과 동일한 폴더에 위치 시킨다.(편리상)  
-(Web에 있는 음원을 사용하기 위한 방법 : https://github.com/ChanMinPark/DailyStudy/blob/master/htmlextraction/HowtoPlayMusicofWeb.md)
+(Web에 있는 음원을 사용하기 위한 방법 : https://github.com/ChanMinPark/DailyStudy/blob/master/htmlextraction/HowtoPlayMusicofWeb.md)  
 python에서 음악을 재생하기 위한 라이브러리는 여러가지가 있으나, 그중 pyglet과 pygame을 가장 많이 사용하는 것 같다.  
 기본적인 라이브러리들은 wav파일만을 지원하기 때문에 대중적으로 사용되지 않고, 다양한 포맷을 지원하는 pyglet과 pygame을 이용한다.  
 여기에서는 pygame을 사용했다. pyglet은 그래픽과 멀티미디어를 위한 라이브러리인데 SSH를 통해 라즈베리파이에 접근하기 때문에 디스플레이가 없다는 이유로 pyglet이 동작하지 않고 에러를 발생시킨다.  
