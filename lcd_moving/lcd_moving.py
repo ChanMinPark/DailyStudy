@@ -105,7 +105,9 @@ if __name__ == '__main__':
     pass
   finally:
     # shut down cleanly
-    curses.nocbreak(); stdscr.keypad(0); curses.echo()
+    curses.nocbreak()
+    stdscr.keypad(0)
+    curses.echo()
     curses.endwin()
     
     lcd_byte(0x01, LCD_CMD)
