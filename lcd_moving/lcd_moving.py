@@ -79,10 +79,10 @@ def printToLCD():
   lcd_string('%s' %(line_f), LCD_LINE_1,1)
   lcd_string('%s' %(line_s), LCD_LINE_2,1)
   
-def changeColor():
+#def changeColor():
   #write codes
 
-def locateTarget():
+#def locateTarget():
   #write codes
 
 
