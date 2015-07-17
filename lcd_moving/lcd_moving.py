@@ -18,7 +18,7 @@ line_f="                "
 line_s="                "
 
 #game time
-gtime = 30
+gtime = 0
 
 def main():
   global line_f, gtime
@@ -28,7 +28,7 @@ def main():
   line_f="                "
   printToLCD()
   
-  thread.start_new_thread(gameTimer)
+  thread.start_new_thread(gameTimer, 30)
   
   while gtime > 0:
     char = stdscr.getch()
@@ -97,8 +97,9 @@ def printToLCD():
   lcd_string('%s%2d' %(line_f, gtime), LCD_LINE_1,1)
   lcd_string('%s' %(line_s), LCD_LINE_2,1)
   
-def gameTimer():
+def gameTimer(initTime):
   global gtime
+  gtime = initTime
   while gtime > 0:
     time.sleep(1)
     gtime = gtime - 1
