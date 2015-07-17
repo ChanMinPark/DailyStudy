@@ -20,6 +20,9 @@ line_s="              "
 #game time
 gtime = 30
 
+#create lock object
+lock = thread.allocate_lock()
+
 def main():
   global line_f, gtime
   
@@ -94,8 +97,10 @@ def pressLeftKey():
   
 def printToLCD():
   global line_f, line_s, gtime
+  lock.acquire()
   lcd_string('%s%2s' %(line_f, gtime), LCD_LINE_1,1)
   lcd_string('%s' %(line_s), LCD_LINE_2,1)
+  lock.release()
   
 def gameTimer(initTime):
   global gtime
@@ -103,7 +108,8 @@ def gameTimer(initTime):
   while gtime > 0:
     time.sleep(1)
     gtime = gtime - 1
-    thread.start_new_thread(printToLCD,())
+    if lock.locked()==False:
+      printToLCD()
     
   
   
