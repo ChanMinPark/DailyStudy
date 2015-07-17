@@ -77,9 +77,9 @@ def pressLeftKey():
   global line_f, line_s, characterLine, characterPos
   if characterPos != 0:
     if characterLine == 1:
-      line_f = line_f[:characterPos-2]+line_f[characterPos:characterPos+1]+" "+line_f[characterPos+1:]
+      line_f = line_f[:characterPos-1]+line_f[characterPos:characterPos+1]+" "+line_f[characterPos+1:]
     else:
-      line_s = line_s[:characterPos-2]+line_s[characterPos:characterPos+1]+" "+line_s[characterPos+1:]
+      line_s = line_s[:characterPos-1]+line_s[characterPos:characterPos+1]+" "+line_s[characterPos+1:]
     characterPos = characterPos - 1
     printToLCD()
   
