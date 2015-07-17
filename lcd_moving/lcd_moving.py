@@ -88,28 +88,28 @@ def printToLCD():
 
 #if __name__ == '__main__':
 try:
-    # Initialise display
-    lcd_init()
-    
-    # get the curses screen window
-    stdscr = curses.initscr()
-    # turn off input echoing
-    curses.noecho()
-    # respond to keys immediately (don't wait for enter)
-    curses.cbreak()
-    # map arrow keys to special values
-    stdscr.keypad(True)
-    
-    main()
-  except KeyboardInterrupt:
-    pass
-  finally:
-    # shut down cleanly
-    curses.nocbreak()
-    stdscr.keypad(0)
-    curses.echo()
-    curses.endwin()
-    
-    lcd_byte(0x01, LCD_CMD)
-    lcd_string("Goodbye!",LCD_LINE_1,2)
-    GPIO.cleanup()
+  # Initialise display
+  lcd_init()
+  
+  # get the curses screen window
+  stdscr = curses.initscr()
+  # turn off input echoing
+  curses.noecho()
+  # respond to keys immediately (don't wait for enter)
+  curses.cbreak()
+  # map arrow keys to special values
+  stdscr.keypad(True)
+  
+  main()
+except KeyboardInterrupt:
+  pass
+finally:
+  # shut down cleanly
+  curses.nocbreak()
+  stdscr.keypad(0)
+  curses.echo()
+  curses.endwin()
+  
+  lcd_byte(0x01, LCD_CMD)
+  lcd_string("Goodbye!",LCD_LINE_1,2)
+  GPIO.cleanup()
