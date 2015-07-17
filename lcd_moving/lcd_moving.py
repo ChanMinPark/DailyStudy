@@ -103,7 +103,7 @@ def gameTimer(initTime):
   while gtime > 0:
     time.sleep(1)
     gtime = gtime - 1
-    printToLCD()
+    #printToLCD()
     
   
   
