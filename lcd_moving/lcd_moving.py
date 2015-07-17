@@ -94,7 +94,7 @@ def pressLeftKey():
   
 def printToLCD():
   global line_f, line_s, gtime
-  lcd_string('%s%2d' %(line_f, gtime), LCD_LINE_1,1)
+  lcd_string('%s%2s' %(line_f, gtime), LCD_LINE_1,1)
   lcd_string('%s' %(line_s), LCD_LINE_2,1)
   
 def gameTimer(initTime):
