@@ -86,8 +86,8 @@ def printToLCD():
   #write codes
 
 
-if __name__ == '__main__':
-  try:
+#if __name__ == '__main__':
+try:
     # Initialise display
     lcd_init()
     
