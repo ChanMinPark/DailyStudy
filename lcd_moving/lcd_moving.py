@@ -48,8 +48,8 @@ def initWord():
 def pressUpKey():
   global line_f, line_s, characterLine, characterPos
   if characterLine != 1:
-    line_f[characterPos] = line_s[characterPos]
-    line_s[characterPos] = " "
+    line_f[characterPos:characterPos+1] = line_s[characterPos:characterPos+1]
+    line_s[characterPos:characterPos+1] = " "
     characterLine = characterLine - 1
     
     printToLCD()
