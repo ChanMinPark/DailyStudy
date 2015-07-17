@@ -4,6 +4,7 @@
 import sys
 from lcd import *
 import curses
+import thread
 
 #Position of Character
 characterLine=0
@@ -16,15 +17,20 @@ targetPos=0
 line_f="                "
 line_s="                "
 
+#game time
+gtime = 30
+
 def main():
-  global line_f
+  global line_f, gtime
   
   initWord()
   time.sleep(5)
   line_f="                "
   printToLCD()
   
-  while True:
+  thread.start_new_thread(gameTimer)
+  
+  while gtime > 0:
     char = stdscr.getch()
     if char == curses.KEY_UP:
       pressUpKey()
@@ -35,6 +41,9 @@ def main():
     elif char == curses.KEY_LEFT:
       pressLeftKey()
   
+  lcd_string('Game', LCD_LINE_1,2)
+  lcd_string('Over', LCD_LINE_2,2)
+  time.sleep(3)
 
 def initWord():
   global line_f, line_s, characterLine, characterPos
@@ -65,7 +74,7 @@ def pressDownKey():
   
 def pressRightKey():
   global line_f, line_s, characterLine, characterPos
-  if characterPos != 15:
+  if characterPos != 13:
     if characterLine == 1:
       line_f = line_f[:characterPos]+" "+line_f[characterPos:characterPos+1]+line_f[characterPos+2:]
     else:
@@ -84,9 +93,17 @@ def pressLeftKey():
     printToLCD()
   
 def printToLCD():
-  global line_f, line_s
-  lcd_string('%s' %(line_f), LCD_LINE_1,1)
+  global line_f, line_s, gtime
+  lcd_string('%s%2d' %(line_f, gtime), LCD_LINE_1,1)
   lcd_string('%s' %(line_s), LCD_LINE_2,1)
+  
+def gameTimer():
+  global gtime
+  while gtime > 0:
+    time.sleep(1)
+    gtime = gtime - 1
+    
+  
   
 #def changeColor():
   #write codes
