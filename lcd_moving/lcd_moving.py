@@ -5,17 +5,6 @@ import sys
 from lcd import *
 import curses
 
-#Position of Character
-characterLine=0
-characterPos=0
-
-#Position of Target
-targetPos=0
-
-#Line Text
-line_f="                "
-line_s="                "
-
 def main():
   initWord()
   time.sleep(5)
@@ -98,6 +87,17 @@ def printToLCD():
 
 
 if __name__ == '__main__':
+  #Position of Character
+  characterLine=0
+  characterPos=0
+  
+  #Position of Target
+  targetPos=0
+
+  #Line Text
+  line_f="                "
+  line_s="                "
+  
   # Initialise display
   lcd_init()
   
