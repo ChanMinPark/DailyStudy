@@ -5,7 +5,20 @@ import sys
 from lcd import *
 import curses
 
+#Position of Character
+characterLine=0
+characterPos=0
+  
+#Position of Target
+targetPos=0
+
+#Line Text
+line_f="                "
+line_s="                "
+
 def main():
+  global line_f
+  
   initWord()
   time.sleep(5)
   line_f="                "
@@ -24,7 +37,7 @@ def main():
   
 
 def initWord():
-  #write codes
+  global line_f, line_s, characterLine, characterPos
   line_f = " Get the Target "
   line_s = "       @        "
   characterLine=2
@@ -33,7 +46,7 @@ def initWord():
   printToLCD()
 
 def pressUpKey():
-  #write codes
+  global line_f, line_s, characterLine, characterPos
   if characterLine != 1:
     line_f[characterPos] = line_s[characterPos]
     line_s[characterPos] = " "
@@ -42,8 +55,8 @@ def pressUpKey():
     printToLCD()
   
 def pressDownKey():
-  #write codes
-   if characterLine != 2:
+  global line_f, line_s, characterLine, characterPos
+  if characterLine != 2:
     line_s[characterPos] = line_f[characterPos]
     line_f[characterPos] = " "
     characterLine = characterLine + 1
@@ -51,7 +64,7 @@ def pressDownKey():
     printToLCD()
   
 def pressRightKey():
-  #write codes
+  global line_f, line_s, characterLine, characterPos
   if characterPos != 15:
     if characterLine == 1:
       line_f[characterPos+1] = line_f[characterPos]
@@ -63,7 +76,7 @@ def pressRightKey():
     printToLCD()
 
 def pressLeftKey():
-  #write codes
+  global line_f, line_s, characterLine, characterPos
   if characterPos != 0:
     if characterLine == 1:
       line_f[characterPos-1] = line_f[characterPos]
@@ -75,7 +88,7 @@ def pressLeftKey():
     printToLCD()
   
 def printToLCD():
-  #write codes
+  global line_f, line_s
   lcd_string('%s' %(line_f), LCD_LINE_1,1)
   lcd_string('%s' %(line_s), LCD_LINE_2,1)
   
@@ -87,17 +100,6 @@ def printToLCD():
 
 
 if __name__ == '__main__':
-  #Position of Character
-  global characterLine=0
-  global characterPos=0
-  
-  #Position of Target
-  global targetPos=0
-
-  #Line Text
-  global line_f="                "
-  global line_s="                "
-  
   # Initialise display
   lcd_init()
   
