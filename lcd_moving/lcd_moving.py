@@ -87,6 +87,9 @@ def printToLCD():
 
 
 if __name__ == '__main__':
+  # Initialise display
+  lcd_init()
+  
   # get the curses screen window
   stdscr = curses.initscr()
   # turn off input echoing
@@ -96,8 +99,6 @@ if __name__ == '__main__':
   # map arrow keys to special values
   stdscr.keypad(True)
   try:
-    # Initialise display
-    lcd_init()
     main()
   except KeyboardInterrupt:
     pass
