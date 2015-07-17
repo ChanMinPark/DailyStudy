@@ -18,7 +18,7 @@ line_f="                "
 line_s="                "
 
 #game time
-gtime = 0
+gtime = 30
 
 def main():
   global line_f, gtime
