@@ -88,15 +88,15 @@ def printToLCD():
 
 if __name__ == '__main__':
   #Position of Character
-  characterLine=0
-  characterPos=0
+  global characterLine=0
+  global characterPos=0
   
   #Position of Target
-  targetPos=0
+  global targetPos=0
 
   #Line Text
-  line_f="                "
-  line_s="                "
+  global line_f="                "
+  global line_s="                "
   
   # Initialise display
   lcd_init()
