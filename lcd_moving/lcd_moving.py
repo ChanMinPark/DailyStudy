@@ -22,6 +22,17 @@ def main():
   line_f="                "
   printToLCD()
   
+  while True:
+    char = stdscr.getch()
+    if char == curses.KEY_UP:
+      pressUpKey()
+    elif char == curses.KEY_DOWN:
+      pressDownKey()
+    elif char == curses.KEY_RIGHT:
+      pressRightKey()
+    elif char == curses.KEY_LEFT:
+      pressLeftKey()
+  
 
 def initWord():
   #write codes
