@@ -28,7 +28,7 @@ def main():
   line_f="                "
   printToLCD()
   
-  thread.start_new_thread(gameTimer, 30)
+  thread.start_new_thread(gameTimer, (30,))
   
   while gtime > 0:
     char = stdscr.getch()
