@@ -14,8 +14,8 @@ characterPos=0
 targetPos=0
 
 #Line Text
-line_f="                "
-line_s="                "
+line_f="              "
+line_s="              "
 
 #game time
 gtime = 30
@@ -25,7 +25,7 @@ def main():
   
   initWord()
   time.sleep(5)
-  line_f="                "
+  line_f="              "
   printToLCD()
   
   thread.start_new_thread(gameTimer, (30,))
@@ -48,7 +48,7 @@ def main():
 def initWord():
   global line_f, line_s, characterLine, characterPos
   line_f = " Get the Target "
-  line_s = "       @        "
+  line_s = "       @      "
   characterLine=2
   characterPos=7
   
