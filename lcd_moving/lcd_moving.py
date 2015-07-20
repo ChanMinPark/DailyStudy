@@ -33,6 +33,7 @@ def main():
   initWord()
   time.sleep(5)
   line_f="              "
+  locateTarget()
   printToLCD()
   
   thread.start_new_thread(gameTimer, (30,))
@@ -55,7 +56,7 @@ def main():
 def initWord():
   global line_f, line_s, characterLine, characterPos
   line_f = " Get the Target "
-  line_s = "       @      "
+  line_s = "       @        "
   characterLine=2
   characterPos=7
   
