@@ -28,12 +28,12 @@ gscore = 0
 lock = thread.allocate_lock()
 
 def main():
-  global line_f, gtime, gscore
+  global line_f, line_s, gtime, gscore
   
   initWord()
   time.sleep(5)
   line_f = "              "
-  line_s = line_s[:14]
+  line_s = "       @      "
   printToLCD()
   locateTarget()
   
