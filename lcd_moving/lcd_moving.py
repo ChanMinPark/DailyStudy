@@ -33,6 +33,7 @@ def main():
   initWord()
   time.sleep(5)
   line_f="              "
+  line_s = "       @      "
   printToLCD()
   locateTarget()
   
@@ -129,8 +130,8 @@ def locateTarget():
   #write codes
   global characterLine, characterPos, targetLine, targetPos, line_f, line_s
   while True:
-    targetLine = random.randrange(1,2)
-    targetPos = random.randrange(1,13)
+    targetLine = random.randrange(1,3)
+    targetPos = random.randrange(1,14)
     if targetLine == characterLine:
       if targetPos == characterPos:
         continue
