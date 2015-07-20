@@ -28,11 +28,11 @@ gscore = 0
 lock = thread.allocate_lock()
 
 def main():
-  global line_f, gtime
+  global line_f, gtime, gscore
   
   initWord()
   time.sleep(5)
-  line_f="              "
+  line_f = "              "
   line_s = "       @      "
   printToLCD()
   locateTarget()
@@ -50,8 +50,8 @@ def main():
     elif char == curses.KEY_LEFT:
       pressLeftKey()
   
-  lcd_string('Game', LCD_LINE_1,2)
-  lcd_string('Over', LCD_LINE_2,2)
+  lcd_string('Game Over', LCD_LINE_1,2)
+  lcd_string('%s' %gscore, LCD_LINE_2,2)
   time.sleep(3)
 
 def initWord():
