@@ -42,4 +42,4 @@ https://github.com/ChanMinPark/DailyStudy/blob/master/lcd_moving/lcd_moving.py
 
 ####**4.실행 결과**
 이번 프로젝트의 실행 결과를 동영상으로 제작하여 유튜브에 업로드 하였다.  
-[[youtube-{RhdrT6STYZ8}-{688}x{387}]]
+<object width="480" height="385"><param name="movie" value="https://youtu.be/RhdrT6STYZ8"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="https://youtu.be/RhdrT6STYZ8" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="480" height="385"></embed></object>
