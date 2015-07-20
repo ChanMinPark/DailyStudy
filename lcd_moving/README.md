@@ -39,3 +39,7 @@ Curses를 끝내기위해서 코드가 끝나기 전에 아래와 같이 수행�
 ####**3.코드 작성하기**
 아래 링크에 전체 코드가 있다.  
 https://github.com/ChanMinPark/DailyStudy/blob/master/lcd_moving/lcd_moving.py  
+
+####**4.실행 결과**
+이번 프로젝트의 실행 결과를 동영상으로 제작하여 유튜브에 업로드 하였다.  
+[[youtube-{RhdrT6STYZ8}-{688}x{387}]]
