@@ -5,12 +5,14 @@ import sys
 from lcd import *
 import curses
 import thread
+import random
 
 #Position of Character
 characterLine=0
 characterPos=0
   
 #Position of Target
+targetLine=0
 targetPos=0
 
 #Line Text
@@ -19,6 +21,8 @@ line_s="              "
 
 #game time
 gtime = 30
+#game score
+gscore = 0
 
 #create lock object
 lock = thread.allocate_lock()
@@ -65,6 +69,7 @@ def pressUpKey():
     characterLine = characterLine - 1
     
     printToLCD()
+    catchTarget()
   
 def pressDownKey():
   global line_f, line_s, characterLine, characterPos
@@ -74,6 +79,7 @@ def pressDownKey():
     characterLine = characterLine + 1
     
     printToLCD()
+    catchTarget()
   
 def pressRightKey():
   global line_f, line_s, characterLine, characterPos
@@ -84,6 +90,7 @@ def pressRightKey():
       line_s = line_s[:characterPos]+" "+line_s[characterPos:characterPos+1]+line_s[characterPos+2:]
     characterPos = characterPos + 1
     printToLCD()
+    catchTarget()
 
 def pressLeftKey():
   global line_f, line_s, characterLine, characterPos
@@ -94,12 +101,13 @@ def pressLeftKey():
       line_s = line_s[:characterPos-1]+line_s[characterPos:characterPos+1]+" "+line_s[characterPos+1:]
     characterPos = characterPos - 1
     printToLCD()
+    catchTarget()
   
 def printToLCD():
-  global line_f, line_s, gtime
+  global line_f, line_s, gtime, gscore
   lock.acquire()
   lcd_string('%s%2s' %(line_f, gtime), LCD_LINE_1,1)
-  lcd_string('%s' %(line_s), LCD_LINE_2,1)
+  lcd_string('%s%2s' %(line_s, gscore), LCD_LINE_2,1)
   lock.release()
   
 def gameTimer(initTime):
@@ -116,8 +124,37 @@ def gameTimer(initTime):
 #def changeColor():
   #write codes
 
-#def locateTarget():
+def locateTarget():
   #write codes
+  global characterLine, characterPos, targetLine, targetPos, line_f, line_s
+  while True:
+    targetLine = random.randrange(1,2)
+    targetPos = random.randrange(1,13)
+    if targetLine == characterLine:
+      if targetPos == characterPos:
+        continue
+      else:
+        if targetLine == 1:
+          line_f = line_f[:targetPos]+"$"+line_f[targetPos+1:]
+        else:
+          line_s = line_s[:targetPos]+"$"+line_s[targetPos+1:]
+        break
+    else:
+      if targetLine == 1:
+        line_f = line_f[:targetPos]+"$"+line_f[targetPos+1:]
+      else:
+        line_s = line_s[:targetPos]+"$"+line_s[targetPos+1:]
+      break
+  
+  printToLCD()
+  
+def catchTarget():
+  global characterLine, characterPos, targetLine, targetPos, gscore
+  if characterLine == targetLine:
+    if characterPos == targetPos:
+      gscore += 1
+      locateTarget()
+
 
 
 if __name__ == '__main__':
