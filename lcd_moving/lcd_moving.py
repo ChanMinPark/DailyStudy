@@ -33,8 +33,8 @@ def main():
   initWord()
   time.sleep(5)
   line_f="              "
-  locateTarget()
   printToLCD()
+  locateTarget()
   
   thread.start_new_thread(gameTimer, (30,))
   
