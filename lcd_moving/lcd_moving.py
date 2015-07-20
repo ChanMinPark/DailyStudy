@@ -123,8 +123,11 @@ def gameTimer(initTime):
     
   
   
-#def changeColor():
+def changeColor():
   #write codes
+  yellowLCDon()
+  time.sleep(0.3)
+  whiteLCDon()
 
 def locateTarget():
   #write codes
@@ -155,6 +158,7 @@ def catchTarget():
   if characterLine == targetLine:
     if characterPos == targetPos:
       gscore += 1
+      thread.start_new_thread(changeColor, ())
       locateTarget()
 
 
@@ -162,6 +166,7 @@ def catchTarget():
 if __name__ == '__main__':
   # Initialise display
   lcd_init()
+  whiteLCDon()
   
   # get the curses screen window
   stdscr = curses.initscr()
