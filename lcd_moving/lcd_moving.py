@@ -33,7 +33,7 @@ def main():
   initWord()
   time.sleep(5)
   line_f = "              "
-  line_s = "       @      "
+  #line_s = "       @      "
   printToLCD()
   locateTarget()
   
@@ -50,14 +50,14 @@ def main():
     elif char == curses.KEY_LEFT:
       pressLeftKey()
   
-  lcd_string('Game Over', LCD_LINE_1,2)
+  lcd_string('Game Over!', LCD_LINE_1,2)
   lcd_string('%s' %gscore, LCD_LINE_2,2)
   time.sleep(3)
 
 def initWord():
   global line_f, line_s, characterLine, characterPos
   line_f = " Get the Target "
-  line_s = "       @        "
+  line_s = "       @      "
   characterLine=2
   characterPos=7
   
