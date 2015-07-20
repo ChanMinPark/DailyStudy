@@ -126,7 +126,7 @@ def gameTimer(initTime):
 def changeColor():
   #write codes
   yellowLCDon()
-  time.sleep(0.3)
+  time.sleep(0.2)
   whiteLCDon()
 
 def locateTarget():
