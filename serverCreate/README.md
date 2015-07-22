@@ -158,3 +158,29 @@ Apache를 재시작 해준다.
 	$sudo service apache2 restart
 
 ####(2) Mysql - Tomcat 연동  
+Mysql과 Tomcat의 연동은 JDBC를 설치하는 것이다.  
+JDBC 설치를 위하여 Connector/J를 다운 받아야한다.  
+아래의 링크에서 Connector/J의 다운로드 링크를 획득할 수 있다.  
+http://dev.mysql.com/downloads/connector/j/
+
+아래 명령어로 Connector/J의 tar.gz 파일을 다운로드 한다.  
+(나는 /usr/local에서 다운 받았다. 어차피 압축풀면 다른 곳으로 이동할 것들이라 아무데서 해도 될 것 같다.)
+
+	$sudo wget http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.36.tar.gz
+다운로드 된 파일의 압축을 푼다.
+
+	$sudo tar xvzf mysql-connector-java-5.1.36.tar.gz
+압축을 풀고 폴더 안에 들어가면 jar파일이 있는데 이것을 아래 두 경로로 복사한다.
+
+	$sudo cp mysql-connector-java-5.1.36-bin.jar /usr/lib/jvm/jdk-7-oracle-armhf/jre/lib/ext
+	$sudo cp mysql-connector-java-5.1.36-bin.jar /usr/share/tomcat7/lib
+	
+마지막으로, 제대로 JDBC 드라이버가 설치가 되었는지 확인한다.
+
+	$javap org.gjt.mm.mysql.Driver
+아래 처럼 나오면 정상적으로 설치가 된 것이다.
+
+	Compiled from "Driver.java"
+	public class org.gjt.mm.mysql.Driver extends com.mysql.jdbc.Driver {
+	  public org.gjt.mm.mysql.Driver() throws java.sql.SQLException;
+	}
