@@ -1,4 +1,4 @@
-#< 라즈베리파이에 Apache, Tomcat, Mysql 설치하기 >  
+#<라즈베리파이에 Apache, Tomcat, Mysql 설치하기>  
 
 ###1. JAVA 확인하기.  
 Tomcat7이 apt에서 받을 수 있는 최신 버전인데 Tomcat7은 JAVA JDK 1.8에서 동작하지 않는다.(컴파일이 되지 않는다.)  
@@ -37,10 +37,12 @@ Tomcat 구동시에 이용하는 환경 설정 파일에 JAVA_HOME을 잡아주�
 ![](/RefImage/tomcat_2.JPG)
 
 이제 설치와 설정은 끝났다.  
-tomcat을 구동시키기 위해 아래 명령어를 사용한다.  
+Tomcat을 구동시키기 위해 아래 명령어를 사용한다.  
 
 	$sudo service tomcat7 start
-tomcat을 중지시키기 위해서는 stop을 쓰면된다.  
+Tomcat을 구동시키고 웹브라우저에서 http://(웹서버 ip주소):8080 으로 접속하면 It works! 라고 출력되는 페이지를 볼 수 있다.  
+	
+Tomcat을 중지시키기 위해서는 stop을 쓰면된다.  
 
 	$sudo service tomcat7 stop
 
