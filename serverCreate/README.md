@@ -1,4 +1,4 @@
-#<라즈베리파이에 Apache, Tomcat, Mysql 설치하기>  
+#<Raspberry Pi에 Apache, Tomcat, Mysql 설치하기>  
 
 ###1. JAVA 확인하기.  
 Tomcat7이 apt에서 받을 수 있는 최신 버전인데 Tomcat7은 JAVA JDK 1.8에서 동작하지 않는다.(컴파일이 되지 않는다.)  
