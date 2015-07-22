@@ -46,3 +46,42 @@ Tomcat을 중지시키기 위해서는 stop을 쓰면된다.
 
 	$sudo service tomcat7 stop
 
+###3. Apache2 설치 및 Tomcat과 연동.  
+Apache2와 Apache-Tomcat을 연동하는 패키지를 설치한다.  
+
+	$sudo apt-get install apache2 libapache2-mod-jk
+설치가 완료되면 Apache에서 jk module을 사용하게 하기 위한 설정을 해준다.  
+
+	$sudo nano /etc/apache2/apache2.conf
+
+아래 코드를 추가한다.  
+
+	#JK_MODULE
+    LoadModule jk_module /usr/lib/apache2/modules/mod_jk.so
+    
+    #ServerName
+    ServerName localhost
+다음으로 jk module을 이용해서 Apache가 Tomcat으로 넘길 패턴을 설정한다.  
+
+	$sudo nano /etc/apache2/sites-enabled/000-default
+아래 그림에서 처럼 JkMount부분을 추가한다. 무조건 따라서 복사 하는 것은 아니고 원하는 확장자를 넣어주면 된다.  
+
+	JkMount /*.jsp ajp13_worker
+	JkMount /*.gm ajp13_worker
+![](/RefImage/apache_1.JPG)
+
+이제 apache를 재시작 해주면 될...거라 생각했는데 안됐다.  
+503에러가 발생했는데 원인과 해결법을 계속 찾아 해매다가 찾았다.  
+(너무 고마운 문제해결을 도와준 사이트 : http://thetechnocratnotebook.blogspot.kr/2012/05/installing-tomcat-7-and-apache2-with.html)  
+
+아래 한 작업까지 해주면 완성이다.  
+
+	$sudo nano /etc/tomcat7/server.xml
+에 들어가서 아래의 줄을 찾아서 주석을 지워준다.
+
+	<Connector port="8009" protocol="AJP/1.3" redirectPort="8443" />
+이제 Tomcat과 Apache를 재시작 해주면 된다.  
+
+	$sudo service tomcat7 restart
+    $sudo service apache2 restart
+이제 웹브라우저에서 tomcat에 있는 페이지에 접근할때 번거롭게 8080포트를 써줄 필요 없이 바로 ip주소/jsp파일이름 으로 접근할 수 있다.
