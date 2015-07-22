@@ -94,12 +94,12 @@ Apache2와 Apache-Tomcat을 연동하는 패키지를 설치한다.
 
 	$sudo nano /etc/mysql/my.cnf
 
-아래와 같이 수정한다.  
+아래와 같이 수정한다. 괄호 친 부분을 추가하면 된다.  
 
 	[client]
     port			= 3306
     socket			= /var/run/mysqld/mysqld.sock
-    default-character-set = utf8
+    (default-character-set = utf8)
     
     (중간생략…)
     
@@ -116,12 +116,12 @@ Apache2와 Apache-Tomcat을 연동하는 패키지를 설치한다.
     tmpdir				= /tmp
     lc-messages-dir		= /usr/share/mysql
     skip-external-locking
-    character-set-client-handshake = FALSE
-    init_connect = "SET collation_connection = utf8_general_ci"
-    init_connect = "SET NAMES utf8"
-    #default-character-set = utf8
-    character-set-server = utf8
-    collation-server = utf8_general_ci
+    (character-set-client-handshake = FALSE)
+    (init_connect = "SET collation_connection = utf8_general_ci")
+    (init_connect = "SET NAMES utf8")
+    (#default-character-set = utf8)
+    (character-set-server = utf8)
+    (collation-server = utf8_general_ci)
     
     (중간생략…)
     
@@ -129,17 +129,21 @@ Apache2와 Apache-Tomcat을 연동하는 패키지를 설치한다.
     # ssl-cert=/etc/mysql/server-cert.pem
     # ssl-key=/etc/mysql/server-key.pem
     
-    default-storage-engine = INNODB
+    (default-storage-engine = INNODB)
     
     [mysqldump]
     quick
     quote-names
     max_allowed_packet      = 16M
-    default-character-set = utf8
+    (default-character-set = utf8)
     
     [mysql]
     #no-auto-rehash # faster start of mysql but no tab completition
-    ++default-character-set = utf8++
+    (default-character-set = utf8)
+Apache를 재시작 해준다.
+
+	$sudo service apache2 restart
+
 
 mysql 시작, 중지 방법  
 
