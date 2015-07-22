@@ -28,13 +28,13 @@ apt로 Tomcat7을 설치한다.
 	$sudo apt-get install tomcat7
 설치가 완료되면 설치 로그 맨 아래를 잘 보아야한다.  
 tomcat7이라는 user와 group이 새로 생긴다. 그리고, 내 경우에는 JAVA_HOME이 제대로 잡히지 않아서 Tomcat7이 설치는 되었지만 JAVA를 못 찾아서 구동은 바로 되지 못하였다.  
-(사진 추가)  
+![](/RefImage/tomcat_1.JPG)
 
 Tomcat 구동시에 이용하는 환경 설정 파일에 JAVA_HOME을 잡아주어야 한다.  
 
 	$sudo nano /etc/default/tomcat7
 3번째 문단에 JAVA_HOME이 주석처리 되어 있는데 주석을 풀고 자신의 JAVA 경로를 넣어주면 된다.
-(그림 추가)  
+![](/RefImage/tomcat_2.JPG)
 
 이제 설치와 설정은 끝났다.  
 tomcat을 구동시키기 위해 아래 명령어를 사용한다.  
