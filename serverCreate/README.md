@@ -85,3 +85,72 @@ Apache2와 Apache-Tomcat을 연동하는 패키지를 설치한다.
 	$sudo service tomcat7 restart
     $sudo service apache2 restart
 이제 웹브라우저에서 tomcat에 있는 페이지에 접근할때 번거롭게 8080포트를 써줄 필요 없이 바로 ip주소/jsp파일이름 으로 접근할 수 있다.
+
+###4. Mysql 설치.  
+	$sudo apt-get install mysql-server mysql-client
+설치시 mysql의 root유저 비밀번호를 설정하라고 한다.  
+
+설치후 my.cnf에서 설정을 조금 바꿔준다.  
+
+	$sudo nano /etc/mysql/my.cnf
+
+아래와 같이 수정한다.  
+
+	[client]
+    port			= 3306
+    socket			= /var/run/mysqld/mysqld.sock
+    default-character-set = utf8
+    
+    (중간생략…)
+    
+    [mysqld]
+    #
+    # * Basic Settings
+    #
+    user = mysql
+    pid-file			= /var/run/mysqld/mysqld.pid
+    socket				= /var/run/mysqld/mysqld.sock
+    port				= 3306
+    basedir				= /usr
+    datadir				= /var/lib/mysql
+    tmpdir				= /tmp
+    lc-messages-dir		= /usr/share/mysql
+    skip-external-locking
+    character-set-client-handshake = FALSE
+    init_connect = "SET collation_connection = utf8_general_ci"
+    init_connect = "SET NAMES utf8"
+    #default-character-set = utf8
+    character-set-server = utf8
+    collation-server = utf8_general_ci
+    
+    (중간생략…)
+    
+    # ssl-ca=/etc/mysql/cacert.pem
+    # ssl-cert=/etc/mysql/server-cert.pem
+    # ssl-key=/etc/mysql/server-key.pem
+    
+    default-storage-engine = INNODB
+    
+    [mysqldump]
+    quick
+    quote-names
+    max_allowed_packet      = 16M
+    default-character-set = utf8
+    
+    [mysql]
+    #no-auto-rehash # faster start of mysql but no tab completition
+    ++default-character-set = utf8++
+
+mysql 시작, 중지 방법  
+
+	$sudo service mysql start/stop
+
+###5. Mysql과 Apache, Tomcat 연동.  
+####(1) Mysql - Apache 연동  
+
+	$sudo apt-get install libapache2-mod-auth-mysql
+Apache를 재시작 해준다.
+
+	$sudo service apache2 restart
+
+####(2) Mysql - Tomcat 연동  
