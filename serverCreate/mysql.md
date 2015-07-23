@@ -34,7 +34,7 @@ table 구조 보기
 
 새로운 레코드 추가하기
 
-  mysql>insert into table이름 values ("값1", "값2", ... );
-  또는
-  mysql>insert into table이름 (field1, field2, ...) values ("값1", "값2", ... );
+	mysql>insert into table이름 values ("값1", "값2", ... );
+	또는
+	mysql>insert into table이름 (field1, field2, ...) values ("값1", "값2", ... );
 
