@@ -1,0 +1,19 @@
+<html>
+	<title>
+	JSP practice - pcm
+	</title>
+	<head>
+	</head>
+	
+	<body>
+		<table border = "1" width = "900" align = "center">
+		<tr align = "center" height = "50">
+			<td colspan="3">2015 하계 인턴십 KETI 멤버</td>
+		</tr>
+		<tr align = "center" height = "30">
+			<td>이름</td>
+			<td>번호</td>
+			<td>이메일</td>
+		</tr>
+	</body>
+</html>
