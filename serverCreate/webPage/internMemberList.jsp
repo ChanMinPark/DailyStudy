@@ -59,6 +59,7 @@
 		if(rs != null) try{rs.close();}catch(SQLException sqle){}		//ResultSet 按眉 秦力
 		if(pstmt != null) try{pstmt.close();}catch(SQLException sqle){}	//PreparedStatement 按眉 秦力
 		if(conn != null) try{conn.close();}catch(SQLException sqle){}	//Connection 按眉 秦力 
+	}
 %>
 		</table>
 	</body>
