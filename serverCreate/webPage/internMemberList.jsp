@@ -62,6 +62,6 @@
 	}
 %>
 		</table>
-		<H3 align="center"><a href="/var/lib/tomcat7/webapps/ROOT/index.html">첫 페이지로 이동</a></H3>
+		<H3 align="center"><a href="http://localhost">첫 페이지로 이동</a></H3>
 	</body>
 </html>
