@@ -5,6 +5,7 @@
 	//참고 사이트 : http://hyeonstorage.tistory.com/112
 	Connection conn = null;				//Connection 객체를 null로 초기화
 	PreparedStatement pstmt = null;
+	ResultSet rs = null;
 
 	try{
 		String url = "jdbc:mysql://localhost:3306/internMember";		//사용하려는 DB명을 포함한 URL
@@ -37,7 +38,7 @@
 		String sql = "select * from memberInfo";
 		pstmt = conn.prepareStatement(sql);		//prepareStatement에서 해당 sql을 미리 컴파일한다.
 
-		ResultSet rs = pstmt.executeQuery();
+		rs = pstmt.executeQuery();
 
 		while(rs.next()){
 			String name = rs.getString("m_name");
