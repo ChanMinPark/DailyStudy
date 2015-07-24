@@ -35,7 +35,7 @@
 		</tr>
 <%
 		String sql = "select * from memberInfo";
-		pstmt = conn.prepareStatementt(Sql);		//prepareStatement에서 해당 sql을 미리 컴파일한다.
+		pstmt = conn.prepareStatementt(sql);		//prepareStatement에서 해당 sql을 미리 컴파일한다.
 
 		ResultSet rs = pstmt.executeQuery();
 
