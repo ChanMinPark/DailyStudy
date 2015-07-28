@@ -17,7 +17,7 @@ Web2py의 Admin Page는 로컬에서 접속하거나 Https를 통해서만 접�
   $openssl genrsa -out server.key 2048
   $openssl req -new -key server.key -out server.csr
   $openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
-  
+
 두번째 명령을 수행할때 인증서에 들어갈 정보를 입력하라고 한다. 아래 사진과 같은 정보를 요구한다.  
 ![](/RefImage/web2py_ssl.jpg)
 
