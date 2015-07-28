@@ -16,6 +16,7 @@ web2py 사이트에서 소스코드 다운로드 링크를 복사해서 wget으�
     $sudo python web2py.py
 
 ##3. 원격 PC의 Web Browser에서 Web2py Admin Page 접속하기  
+(출처 : http://stackoverflow.com/questions/12834550/simplest-way-to-setup-remote-admin-access-to-a-web2py-process)  
 Web2py의 Admin Page는 로컬에서 접속하거나 Https를 통해서만 접근할 수 있다.  
 그래서 다른 컴퓨터의 Web Browser를 통해서 Web2py의 웹서버에 있는 웹페이지는 접근이 되지만 Admin 페이지는 접근할 수 없어서 원격 PC에서 Web2py를 설정할 수 없다.  
 이러한 문제를 해결하기 위해서 SSL 인증서를 Web2py 서버에 추가하는 방법을 사용한다.  
