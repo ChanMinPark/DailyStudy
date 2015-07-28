@@ -1,10 +1,19 @@
 #< Web2py 시작하기 >  
 
 ##1. Web2py 설치  
+web2py 사이트에서 소스코드 다운로드 링크를 복사해서 wget으로 다운받는다.  
 
+    $sudo wget http://www.web2py.com/examples/static/web2py_src.zip
 
 ##2. Web2py 실행  
+리눅스용 web2py는 설치가 아니고 단지 압축만 풀어주면 된다.  
 
+    $sudo unzip web2py_src.zip
+
+압축이 풀린 폴더에 들어가서 web2py를 실행시킨다.
+
+    $cd web2py  
+    $sudo python web2py.py
 
 ##3. 원격 PC의 Web Browser에서 Web2py Admin Page 접속하기  
 Web2py의 Admin Page는 로컬에서 접속하거나 Https를 통해서만 접근할 수 있다.  
