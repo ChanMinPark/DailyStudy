@@ -14,9 +14,9 @@ Web2py의 Admin Page는 로컬에서 접속하거나 Https를 통해서만 접�
   
 (1) 이미 가지고 있는 인증서가 없다면 새로운 인증서를 만든다.(임의의 폴더에서 수행해도 무방하다.)
 
-  $openssl genrsa -out server.key 2048
-  $openssl req -new -key server.key -out server.csr
-  $openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+    $openssl genrsa -out server.key 2048
+    $openssl req -new -key server.key -out server.csr
+    $openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
 
 두번째 명령을 수행할때 인증서에 들어갈 정보를 입력하라고 한다. 아래 사진과 같은 정보를 요구한다.  
 ![](/RefImage/web2py_ssl.jpg)
@@ -25,10 +25,10 @@ Web2py의 Admin Page는 로컬에서 접속하거나 Https를 통해서만 접�
   
 (3) 그리고 web2py를 실행시킬 때 아래와 같이 실행한다.  
 
-  $sudo python web2py.py -i (자신의 ip주소) -p 8000 -a '(원하는 비밀번호)' -c server.crt -k server.key
+    $sudo python web2py.py -i (자신의 ip주소) -p 8000 -a '(원하는 비밀번호)' -c server.crt -k server.key
 
 (4) 이제 아래와 같은 주소로 원격 PC의 Web Browser에서 웹페이지에 접근한다.(https 가 중요하다.)  
 
-  https://(web2py 실행시 입력한 ip주소):8000
+    https://(web2py 실행시 입력한 ip주소):8000
 헌데 브라우저에서 인증서를 의심하여 접속을 막을 수 있다. 어차피 내가 만든 인증서이니 믿고 그냥 들어가도록한다.  
 위 주소에서 Admin Page로 들어가면 정상적으로 들어가진다.  
