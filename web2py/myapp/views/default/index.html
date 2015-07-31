@@ -1,0 +1,26 @@
+{{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
+{{extend 'plugin_layouts/layouts/KeepitSimple.html'}}
+
+{{block header}}
+    <header class="container-fluid background">
+      <div class="jumbotron text-center">
+        {{if response.title:}}
+        <h1>{{=response.title}}
+          <small>{{=response.subtitle or ''}}</small></h1>
+        {{pass}}
+      </div>
+    </header>
+{{end}}
+
+{{if 'message' in globals():}}
+<h2>{{=message}}</h2>
+<p class="lead">{{=T('My project list.')}}</p>
+<ol>
+    <li><a href="http://127.0.0.1:8000/myapp/default/project_temp_humi_co2">{{=T('Temp/Humi/CO2')}}</a></li>
+  
+</ol>
+{{elif 'content' in globals():}}
+{{=content}}
+{{else:}}
+{{=BEAUTIFY(response._vars)}}
+{{pass}}
