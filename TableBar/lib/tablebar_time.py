@@ -1,11 +1,7 @@
 import time
-
-def getNow():
-  now = time.localtime()
-  return now
   
 def getData():
-  now = getNow()
+  now = time.localtime()
   if now.tm_wday == 0:
     wday = "Mon"
   elif now.tm_wday == 1:
@@ -25,6 +21,6 @@ def getData():
   return r_date
 
 def getTime():
-  now = getNow()
+  now = time.localtime()
   r_time = "%02d:%02d:%02d"%(now.tm_hour, now.tm_min, now.tm_sec)
   return r_time
