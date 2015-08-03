@@ -10,6 +10,9 @@ def main():
   # Display date & time
   lcd_string(getData(), LCD_LINE_1, 2)
   lcd_string(getTime(), LCD_LINE_2, 2)
+  
+  #Waiting
+  time.sleep(5)
 
 if __name__ == '__main__':
   try:
