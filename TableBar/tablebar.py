@@ -1,3 +1,4 @@
+import sys
 sys.path.append("./lib")
 from lcd import *
 from tablebar_time import *
