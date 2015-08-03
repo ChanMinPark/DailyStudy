@@ -21,10 +21,10 @@ def getData():
   elif now.tm_wday == 6:
     wday = "Sun"
     
-  r_date = "%4d-%2d-%2d-%s"%(now.tm_year, now.tm_mon, now.tm_mday, wday)
+  r_date = "%04d-%02d-%02d-%s"%(now.tm_year, now.tm_mon, now.tm_mday, wday)
   return r_date
 
 def getTime():
   now = getNow()
-  r_time = "%2d:%2d:%2d"%(now.tm_hour, now.tm_min, now.tm_sec)
+  r_time = "%02d:%02d:%02d"%(now.tm_hour, now.tm_min, now.tm_sec)
   return r_time
