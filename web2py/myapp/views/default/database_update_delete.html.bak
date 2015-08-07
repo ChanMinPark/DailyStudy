@@ -1,0 +1,23 @@
+{{extend 'plugin_layouts/layouts/KeepitSimple.html'}}
+
+{{if table == 'tablebar_schedules':}}
+<html>
+    <head>
+    </head>
+    <body>
+        <H3>Table Bar Setting Page.</H3><br><br>
+        You can update your schedules.<br><br>
+        <br>
+        <B>[일정 수정 하기]</B><br>
+        {{=form.custom.begin}}
+        날짜 : {{=form.custom.widget.date}}<br><br>
+        장소 : {{=form.custom.widget.location}}<br><br>
+        일정 : {{=form.custom.widget.content}}<br><br>
+        알람 : {{=form.custom.widget.isAlarm}}<br><br>
+        {{=form.custom.submit}}
+        {{=form.custom.end}}
+        <br>
+        <br>
+    </body>
+</html>
+{{pass}}

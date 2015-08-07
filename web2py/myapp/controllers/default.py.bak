@@ -7,6 +7,7 @@
 ## - user is required for authentication and authorization
 ## - download is for downloading files uploaded in the db (does streaming)
 #########################################################################
+from temp_humi_co2 import *
 
 def index():
     """
@@ -38,8 +39,43 @@ def user():
     return dict(form=auth())
 
 def project_temp_humi_co2():
-    return dict()
+    r_temp = reading(1)
+    r_humi = reading(2)
+    r_value = calc(r_temp, r_humi)
+    r_co2 = getCO2()
+    return dict(temp = "%.7s"%(r_value[0]), humi = "%.7s"%(r_value[1]), co2 = r_co2)
 
+def project_tablebar_setting():
+    form = SQLFORM(db.tablebar_schedules, deletable=True)
+    if form.accepts(request,session):
+        response.flash = 'Thanks! The form has been submitted.'
+    elif form.errors:
+        response.flash = 'Please correct the error(s).'
+    else:
+        response.flash = 'Try again - no fields can be empty.'
+    
+    rows = db(db.tablebar_schedules.id>0).select()
+    return dict(form=form, rows=rows)
+
+def database_update_delete():
+    if request.args(0) == 'tablebar_schedules':
+        if request.args(1) == 'update':
+            update = db.tablebar_schedules(request.args(2))
+            form = SQLFORM(db.tablebar_schedules, update, deletable=True)
+            if form.accepts(request,session):
+                response.flash = 'Thanks! The form has been submitted.'
+            elif form.errors:
+                response.flash = 'Please correct the error(s).'
+            else:
+                response.flash = 'Try again - no fields can be empty.'
+            return dict(form=form, table='tablebar_schedules', state='update')
+            
+        if request.args(1) == 'delete':
+            db(db.tablebar_schedules.id == request.args(2)).delete()
+            return dict(form=redirect(URL('myapp','default','project_tablebar_setting')))
+
+def profile():
+    return dict()
 
 @cache.action()
 def download():

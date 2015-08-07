@@ -6,9 +6,10 @@
         This page show Temperature, Humidity and CO2 value.<br><br>
         
         <ul>
-            <li>Temp: </li>
-            <li>Humi: </li>
-            <li>CO2 : </li>
+            <li>Temp : {{=temp}}ºC</li>
+            <li>Humi : {{=humi}}%</li>
+            <li>CO2 : {{=co2}}</li>
         </ul>
+        <button onClick="window.location.reload()">Reload</a>
     </body>
 </html>

@@ -1,0 +1,41 @@
+{{extend 'plugin_layouts/layouts/KeepitSimple.html'}}
+<html>
+    <head>
+    </head>
+    <body>
+        <H3>Table Bar Setting Page.</H3><br><br>
+        You can set a location and add your schedules.<br>
+        Also, you can set alarm for schedule.<br><br>
+        <br>
+        <B>[일정 추가 하기]</B><br>
+        {{=form.custom.begin}}
+        날짜 : {{=form.custom.widget.date}}<br><br>
+        장소 : {{=form.custom.widget.location}}<br><br>
+        일정 : {{=form.custom.widget.content}}<br><br>
+        알람 : {{=form.custom.widget.isAlarm}}<br><br>
+        {{=form.custom.submit}}
+        {{=form.custom.end}}
+        <br>
+        <br>
+        <H4>[ Schedule List ]</H4><br>
+        <Table border=1>
+            <th width=200 align="center">{{=T("시간")}}</th>
+            <th width=300 align="center">{{=T("장소")}}</th>
+            <th width=450 align="center">{{=T("일정")}}</th>
+            <th width=50 align="center">{{=T("알림")}}</th>
+            <th width=45 align="center">{{=T("수정")}}</th>
+            <th width=45 align="center">{{=T("삭제")}}</th>
+            {{for row in rows:}}
+            <tr>
+                <td>{{=row.date}}</td>
+                <td>{{=row.location}}</td>
+                <td>{{=row.content}}</td>
+                <td>{{=row.isAlarm}}</td>
+                <td><a href={{=URL('myapp','default','database_update_delete',args=['tablebar_schedules','update',row.id])}}>수정</a></td>
+                <td><a href={{=URL('myapp','default','database_update_delete',args=['tablebar_schedules','delete',row.id])}}>삭제</a></td>
+            </tr>
+            {{pass}}
+        </Table>
+
+    </body>
+</html>

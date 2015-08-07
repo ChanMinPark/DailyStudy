@@ -1,0 +1,21 @@
+(dp1
+S'output'
+p2
+S"<type 'exceptions.IOError'> [Errno 5] Input/output error"
+p3
+sS'layer'
+p4
+S'/usr/local/web2py/applications/myapp/controllers/default.py'
+p5
+sS'code'
+p6
+S'# -*- coding: utf-8 -*-\n# this file is released under public domain and you can use without limitations\n\n#########################################################################\n## This is a sample controller\n## - index is the default action of any application\n## - user is required for authentication and authorization\n## - download is for downloading files uploaded in the db (does streaming)\n#########################################################################\nfrom temp_humi_co2 import *\n\ndef index():\n    """\n    example action using the internationalization operator T and flash\n    rendered by views/default/index.html or views/generic.html\n\n    if you need a simple wiki simply replace the two lines below with:\n    return auth.wiki()\n    """\n    response.flash = T("Hi everyone!")\n    return dict(message=T(\'Welcome to ChanMin\\\'s blog\'))\n\n\ndef user():\n    """\n    exposes:\n    http://..../[app]/default/user/login\n    http://..../[app]/default/user/logout\n    http://..../[app]/default/user/register\n    http://..../[app]/default/user/profile\n    http://..../[app]/default/user/retrieve_password\n    http://..../[app]/default/user/change_password\n    http://..../[app]/default/user/manage_users (requires membership in\n    use @auth.requires_login()\n        @auth.requires_membership(\'group name\')\n        @auth.requires_permission(\'read\',\'table name\',record_id)\n    to decorate functions that need access control\n    """\n    return dict(form=auth())\n\ndef project_temp_humi_co2():\n    r_temp = reading(1)\n    r_humi = reading(2)\n    r_value = calc(r_temp, r_humi)\n    r_co2 = getCO2()\n    return dict(temp = "%.7s"%(r_value[0]), humi = "%.7s"%(r_value[1]), co2 = r_co2)\n\n\ndef profile():\n    return dict()\n\n@cache.action()\ndef download():\n    """\n    allows downloading of uploaded files\n    http://..../[app]/default/download/[filename]\n    """\n    return response.download(request, db)\n\n\ndef call():\n    """\n    exposes services. for example:\n    http://..../[app]/default/call/jsonrpc\n    decorate with @services.jsonrpc the functions to expose\n    supports xml, json, xmlrpc, jsonrpc, amfrpc, rss, csv\n    """\n    return service()\n\nresponse._vars=response._caller(project_temp_humi_co2)\n'
+p7
+sS'snapshot'
+p8
+(dp9
+sS'traceback'
+p10
+S'Traceback (most recent call last):\n  File "/usr/local/web2py/gluon/restricted.py", line 227, in restricted\n    exec ccode in environment\n  File "/usr/local/web2py/applications/myapp/controllers/default.py", line 70, in <module>\n  File "/usr/local/web2py/gluon/globals.py", line 412, in <lambda>\n    self._caller = lambda f: f()\n  File "/usr/local/web2py/applications/myapp/controllers/default.py", line 42, in project_temp_humi_co2\n    r_temp = reading(1)\n  File "applications/myapp/modules/temp_humi_co2.py", line 26, in reading\n    bus.write_quick(SHT20_ADDR)\nIOError: [Errno 5] Input/output error\n'
+p11
+s.

@@ -1,0 +1,584 @@
+(dp1
+S'output'
+p2
+S'missing "pass" in view'
+p3
+sS'layer'
+p4
+S'ParserContainer'
+p5
+sS'code'
+p6
+S'response.write(\'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">\\n<html xmlns="http://www.w3.org/1999/xhtml">\\n <head>\\n  <title>\\n   \', escape=False)\nresponse.write(response.title or request.application)\nresponse.write(\'\\n  </title>\\n \', escape=False)\nresponse.files.append(URL(request.application,\'static\',\'plugin_layouts/layouts/KeepitSimple/css/style.css\'))\nresponse.write(\'\\n  \', escape=False)\nresponse.files.append(URL(\'static\',\'plugin_layouts/superfish.js\'))\nresponse.write(\'\\n  \', escape=False)\nresponse.write(\'<script type="text/javascript"><!--\\n    // These variables are used by the web2py_ajax_init function in web2py_ajax.js (which is loaded below).\\n    var w2p_ajax_confirm_message = "\', escape=False)\nresponse.write(T(\'Are you sure you want to delete this object?\'))\nresponse.write(\'";\\n    var w2p_ajax_disable_with_message = "\', escape=False)\nresponse.write(T(\'Working...\'))\nresponse.write(\'";\\n    var w2p_ajax_date_format = "\', escape=False)\nresponse.write(T(\'%Y-%m-%d\'))\nresponse.write(\'";\\n    var w2p_ajax_datetime_format = "\', escape=False)\nresponse.write(T(\'%Y-%m-%d %H:%M:%S\'))\nresponse.write(\'";\\n    var ajax_error_500 = \\\'\', escape=False)\nresponse.write(T.M(\'An error occured, please [[reload %s]] the page\') % URL(args=request.args, vars=request.get_vars))\nresponse.write("\'\\n    //--></script>\\n", escape=False)\nresponse.files.insert(0,URL(\'static\',\'js/jquery.js\'))\nresponse.files.insert(1,URL(\'static\',\'css/calendar.css\'))\nresponse.files.insert(2,URL(\'static\',\'js/calendar.js\'))\nresponse.files.insert(3,URL(\'static\',\'js/web2py.js\'))\nresponse.include_meta()\nresponse.include_files()\nresponse.write(\'\\n\', escape=False)\nresponse.write(\'\\n  <style>\\nul.web2py-menu-vertical { width: 150px; position: relative; top:1em; left:1em;  z-index:30; border:0; margin:0; padding: 0; list-style: none; text-decoration: none;}\\nul.web2py-menu-vertical li { margin:0; padding:0; border:0; width: 150px; background: black; text-align:right;}\\nul.web2py-menu-vertical li a { margin:0; padding: 1px 3px 1px 3px; border:0; width: 144px; color: white; font-size:12px;}\\ndiv.flash { position: fixed; float: right; padding: 10px; top: 10px; right: 30px; opacity: 0.75; margin: 10px 10px 10px 10px; text-align: center; clear: both; color: #fff; font-size: 11pt; text-align: center; vertical-align: middle; cursor: pointer; background: black; border: 2px solid #fff; -moz-border-radius: 5px; -webkit-border-radius: 5px; z-index: 2; }\\ndiv.error { background-color: red; color: white; padding: 3px; }\\n.auth_navbar { text-align:right; z-index:20; position: absolute; top: 2px; right:30px; border:0; padding:0 }\\n  </style>\\n </head>\\n <body>\\n  <!-- start header -->\\n  \', escape=False)\ntry:\n    response.write(auth.navbar(action=URL(\'default\',\'user\')))\nexcept:pass\nresponse.write(\'\\n\\n  <div id="container">\\n   <div id="header">\\n    <a href="#">\\n     ChanMin\\\'s Blog\\n    </a>\\n   </div>\\n   <div id="menu">\\n       <a href=\', escape=False)\nresponse.write(URL(\'myapp\', \'default\', \'index\'))\nresponse.write(\'>HOME</a> &nbsp; &nbsp; &nbsp; &nbsp; <a href=\', escape=False)\nresponse.write(URL(\'myapp\', \'default\', \'profile\'))\nresponse.write(\'>Profile</a>\\n    <script>\\n      jQuery(document).ready(function(){jQuery(\\\'ul.web2py-menu\\\').superfish({delay:400});});\\n    </script>\\n   </div>\\n   <!--\\n   <div id="sidebar">\\n    <h1>\\n     \', escape=False)\nresponse.write(response.title or request.application)\nresponse.write(\'\\n    </h1>\\n   </div>\\n   -->\\n   <div id="main">\\n    <div class="flash">\', escape=False)\nresponse.write(response.flash or \'\')\nresponse.write(\'</div>\\n    \', escape=False)\nresponse.write(\'\\n<html>\\n    <head>\\n    </head>\\n    <body>\\n        <H3>Table Bar Setting Page.</H3><br><br>\\n        You can set a location and add your schedules.<br>\\n        Moreover, you can set alarms for schedule.<br><br>\\n        \\n        \', escape=False)\nresponse.write(form)\nresponse.write(\'\\n        <br>\\n        <br>\\n        \', escape=False)\nfor row in rows:\n    response.write(\'\\n        \', escape=False)\n    print row\n    response.write(\'\\n        \\n    </body>\\n</html>\\n\', escape=False)\n    response.write(\'\\n   </div>\\n   <div id="footer">\\n    &copy;2007 Keep it Simple &nbsp;\\n    <span class="separator">\\n     |\\n    </span>\\n    &nbsp; Design by\\n    <a href="http://www.realitysoftware.ca" title="Website Design">\\n     Reality Software\\n    </a>\\n   </div>\\n  </div>\\n </body>\\n</html>\\n\', escape=False)'
+p7
+sS'snapshot'
+p8
+(dp9
+S'exception'
+p10
+(dp11
+S'__module__'
+p12
+S"'ssl'"
+p13
+sS'__getslice__'
+p14
+S"<method-wrapper '__getslice__' of SSLError object>"
+p15
+sS'__str__'
+p16
+S"<method-wrapper '__str__' of SSLError object>"
+p17
+sS'__reduce__'
+p18
+S'<built-in method __reduce__ of SSLError object>'
+p19
+sS'__dict__'
+p20
+S'{}'
+p21
+sS'__sizeof__'
+p22
+S'<built-in method __sizeof__ of SSLError object>'
+p23
+sS'__weakref__'
+p24
+S'None'
+p25
+sS'__init__'
+p26
+S"<method-wrapper '__init__' of SSLError object>"
+p27
+sS'__setattr__'
+p28
+S"<method-wrapper '__setattr__' of SSLError object>"
+p29
+sS'__reduce_ex__'
+p30
+S'<built-in method __reduce_ex__ of SSLError object>'
+p31
+sS'__new__'
+p32
+S'<built-in method __new__ of type object>'
+p33
+sS'errno'
+p34
+S'None'
+p35
+sS'__format__'
+p36
+S'<built-in method __format__ of SSLError object>'
+p37
+sS'__class__'
+p38
+S"<class 'ssl.SSLError'>"
+p39
+sS'filename'
+p40
+S'None'
+p41
+sS'__doc__'
+p42
+S'None'
+p43
+sS'__getitem__'
+p44
+S"<method-wrapper '__getitem__' of SSLError object>"
+p45
+sS'__setstate__'
+p46
+S'<built-in method __setstate__ of SSLError object>'
+p47
+sS'__getattribute__'
+p48
+S"<method-wrapper '__getattribute__' of SSLError object>"
+p49
+sS'args'
+p50
+S"('The read operation timed out',)"
+p51
+sS'__subclasshook__'
+p52
+S'<built-in method __subclasshook__ of type object>'
+p53
+sS'__unicode__'
+p54
+S'<built-in method __unicode__ of SSLError object>'
+p55
+sS'strerror'
+p56
+S'None'
+p57
+sS'__delattr__'
+p58
+S"<method-wrapper '__delattr__' of SSLError object>"
+p59
+sS'__repr__'
+p60
+S"<method-wrapper '__repr__' of SSLError object>"
+p61
+sS'__hash__'
+p62
+S"<method-wrapper '__hash__' of SSLError object>"
+p63
+ssS'evalue'
+p64
+S'The read operation timed out'
+p65
+sS'frames'
+p66
+(lp67
+(dp68
+S'file'
+p69
+S'/usr/local/web2py/gluon/rocket.py'
+p70
+sS'dump'
+p71
+(dp72
+S'self'
+p73
+S'<WSGIWorker(Thread-6, started daemon -1287535504)>'
+p74
+sS'conn'
+p75
+S'<gluon.rocket.Connection object>'
+p76
+sS'self.run_app'
+p77
+S'<bound method WSGIWorker.run_app of <WSGIWorker(Thread-6, started daemon -1287535504)>>'
+p78
+ssS'lnum'
+p79
+I1337
+sS'lines'
+p80
+(dp81
+I1332
+S'            # Enter connection serve loop'
+p82
+sI1333
+S'            while True:'
+p83
+sI1334
+S'                if __debug__:'
+p84
+sI1335
+S"                    self.err_log.debug('Serving a request')"
+p85
+sI1336
+S'                try:'
+p86
+sI1337
+S'                    self.run_app(conn)'
+p87
+sI1338
+S'                except:'
+p88
+sI1339
+S'                    exc = sys.exc_info()'
+p89
+sI1340
+S'                    handled = self._handleError(*exc)'
+p90
+sI1341
+S'                    if handled:'
+p91
+ssS'call'
+p92
+S'(self=<WSGIWorker(Thread-6, started daemon -1287535504)>)'
+p93
+sS'func'
+p94
+S'run'
+p95
+sa(dp96
+g69
+S'/usr/local/web2py/gluon/rocket.py'
+p97
+sg71
+(dp98
+S'self'
+p99
+S'<WSGIWorker(Thread-6, started daemon -1287535504)>'
+p100
+sS'self.environ'
+p101
+S"{'HTTPS': 'on', 'HTTP_ACCEPT': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8', 'HTTP_ACCEPT_ENCODING': 'gzip, deflate, sdch', 'HTTP_ACCEPT_LANGUAGE': 'ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4', 'HTTP_CACHE_CONTROL': 'max-age=0', 'HTTP_CONNECTION': 'keep-alive', 'HTTP_COOKIE': 'session_id_welcome=169.254.150.167-8f04213c-6634....254.150.167-7e713fc8-cd0a-4921-a0b8-16ea93c5cba5', 'HTTP_HOST': '169.254.1.89:8000', 'HTTP_REFERER': 'https://169.254.1.89:8000/myapp/default/index', 'HTTP_UPGRADE_INSECURE_REQUESTS': '1', ...}"
+p102
+sS'sock_file'
+p103
+S'<socket._fileobject object>'
+p104
+sS'environ'
+p105
+S'undefined'
+p106
+sS'self.build_environ'
+p107
+S'<bound method WSGIWorker.build_environ of <WSGIWorker(Thread-6, started daemon -1287535504)>>'
+p108
+sS'conn'
+p109
+S'<gluon.rocket.Connection object>'
+p110
+ssg79
+I1830
+sg80
+(dp111
+I1825
+S'        else:'
+p112
+sI1826
+S'            sock_file = conn.makefile(BUF_SIZE)'
+p113
+sI1827
+S''
+sI1828
+S'        try:'
+p114
+sI1829
+S'            # Read the headers and build our WSGI environment'
+p115
+sI1830
+S'            self.environ = environ = self.build_environ(sock_file, conn)'
+p116
+sI1831
+S''
+sI1832
+S'            # Handle 100 Continue'
+p117
+sI1833
+S"            if environ.get('HTTP_EXPECT', '') == '100-continue':"
+p118
+sI1834
+S"                res = environ['SERVER_PROTOCOL'] + ' 100 Continue\\r\\n\\r\\n'"
+p119
+ssg92
+S'(self=<WSGIWorker(Thread-6, started daemon -1287535504)>, conn=<gluon.rocket.Connection object>)'
+p120
+sg94
+S'run_app'
+p121
+sa(dp122
+g69
+S'/usr/local/web2py/gluon/rocket.py'
+p123
+sg71
+(dp124
+S'sock_file'
+p125
+S'<socket._fileobject object>'
+p126
+sS'self.read_request_line'
+p127
+S'<bound method WSGIWorker.read_request_line of <WSGIWorker(Thread-6, started daemon -1287535504)>>'
+p128
+sS'self'
+p129
+S'<WSGIWorker(Thread-6, started daemon -1287535504)>'
+p130
+sS'request'
+p131
+g106
+ssg79
+I1650
+sg80
+(dp132
+I1645
+S'                                      "wsgiorg.futures": executor.futures})'
+p133
+sI1646
+S''
+sI1647
+S'    def build_environ(self, sock_file, conn):'
+p134
+sI1648
+S'        """ Build the execution environment. """'
+p135
+sI1649
+S'        # Grab the request line'
+p136
+sI1650
+S'        request = self.read_request_line(sock_file)'
+p137
+sI1651
+S''
+sI1652
+S'        # Copy the Base Environment'
+p138
+sI1653
+S'        environ = self.base_environ.copy()'
+p139
+sI1654
+S''
+ssg92
+S'(self=<WSGIWorker(Thread-6, started daemon -1287535504)>, sock_file=<socket._fileobject object>, conn=<gluon.rocket.Connection object>)'
+p140
+sg94
+S'build_environ'
+p141
+sa(dp142
+g69
+S'/usr/local/web2py/gluon/rocket.py'
+p143
+sg71
+(dp144
+S'sock_file'
+p145
+S'<socket._fileobject object>'
+p146
+sS'sock_file.readline'
+p147
+S'<bound method _fileobject.readline of <socket._fileobject object>>'
+p148
+sS'd'
+g106
+ssg79
+I1388
+sg80
+(dp149
+I1383
+S''
+sI1384
+S'    def read_request_line(self, sock_file):'
+p150
+sI1385
+S"        self.request_line = ''"
+p151
+sI1386
+S'        try:'
+p152
+sI1387
+S'            # Grab the request line'
+p153
+sI1388
+S'            d = sock_file.readline()'
+p154
+sI1389
+S'            if PY3K:'
+p155
+sI1390
+S"                d = d.decode('ISO-8859-1')"
+p156
+sI1391
+S''
+sI1392
+S"            if d == '\\r\\n':"
+p157
+ssg92
+S'(self=<WSGIWorker(Thread-6, started daemon -1287535504)>, sock_file=<socket._fileobject object>)'
+p158
+sg94
+S'read_request_line'
+p159
+sa(dp160
+g69
+S'/usr/lib/python2.7/socket.py'
+p161
+sg71
+(dp162
+S'self._sock.recv'
+p163
+g106
+sS'self._sock'
+p164
+S'None'
+p165
+sS'self'
+p166
+S'<socket._fileobject object>'
+p167
+sS'self._rbufsize'
+p168
+S'8192'
+p169
+sS'data'
+p170
+g106
+ssg79
+I447
+sg80
+(dp171
+I448
+S'                except error, e:'
+p172
+sI449
+S'                    if e.args[0] == EINTR:'
+p173
+sI450
+S'                        continue'
+p174
+sI451
+S'                    raise'
+p175
+sI442
+S''
+sI443
+S'            buf.seek(0, 2)  # seek end'
+p176
+sI444
+S'            self._rbuf = StringIO()  # reset _rbuf.  we consume it via buf.'
+p177
+sI445
+S'            while True:'
+p178
+sI446
+S'                try:'
+p179
+sI447
+S'                    data = self._sock.recv(self._rbufsize)'
+p180
+ssg92
+S'(self=<socket._fileobject object>, size=-1)'
+p181
+sg94
+S'readline'
+p182
+sa(dp183
+g69
+S'/usr/lib/python2.7/ssl.py'
+p184
+sg71
+(dp185
+S'self.read'
+p186
+S'<bound method SSLSocket.read of <ssl.SSLSocket object>>'
+p187
+sS'self'
+p188
+S'<ssl.SSLSocket object>'
+p189
+sS'buflen'
+p190
+S'8192'
+p191
+ssg79
+I241
+sg80
+(dp192
+I236
+S'        if self._sslobj:'
+p193
+sI237
+S'            if flags != 0:'
+p194
+sI238
+S'                raise ValueError('
+p195
+sI239
+S'                    "non-zero flags not allowed in calls to recv() on %s" %'
+p196
+sI240
+S'                    self.__class__)'
+p197
+sI241
+S'            return self.read(buflen)'
+p198
+sI242
+S'        else:'
+p199
+sI243
+S'            return self._sock.recv(buflen, flags)'
+p200
+sI244
+S''
+sI245
+S'    def recv_into(self, buffer, nbytes=None, flags=0):'
+p201
+ssg92
+S'(self=<ssl.SSLSocket object>, buflen=8192, flags=0)'
+p202
+sg94
+S'recv'
+p203
+sa(dp204
+g69
+S'/usr/lib/python2.7/ssl.py'
+p205
+sg71
+(dp206
+S'len'
+p207
+S'8192'
+p208
+sS'self'
+p209
+S'<ssl.SSLSocket object>'
+p210
+sS'self._sslobj.read'
+p211
+g106
+sS'self._sslobj'
+p212
+S'None'
+p213
+ssg79
+I160
+sg80
+(dp214
+I160
+S'            return self._sslobj.read(len)'
+p215
+sI161
+S'        except SSLError, x:'
+p216
+sI162
+S'            if x.args[0] == SSL_ERROR_EOF and self.suppress_ragged_eofs:'
+p217
+sI163
+S"                return ''"
+p218
+sI164
+S'            else:'
+p219
+sI155
+S''
+sI156
+S'        """Read up to LEN bytes and return them.'
+p220
+sI157
+S'        Return zero-length string on EOF."""'
+p221
+sI158
+S''
+sI159
+S'        try:'
+p222
+ssg92
+S'(self=<ssl.SSLSocket object>, len=8192)'
+p223
+sg94
+S'read'
+p224
+sasS'pyver'
+p225
+S'Python 2.7.3: /usr/bin/python (prefix: /usr)'
+p226
+sS'etype'
+p227
+S"<class 'ssl.SSLError'>"
+p228
+sS'date'
+p229
+S'Tue Aug  4 14:26:51 2015'
+p230
+sS'locals'
+p231
+(dp232
+S'x'
+S"SSLError('The read operation timed out',)"
+p233
+sS'self'
+p234
+S'<ssl.SSLSocket object>'
+p235
+sS'len'
+p236
+S'8192'
+p237
+sssS'traceback'
+p238
+S'Traceback (most recent call last):\n  File "/usr/local/web2py/gluon/rocket.py", line 1337, in run\n    self.run_app(conn)\n  File "/usr/local/web2py/gluon/rocket.py", line 1830, in run_app\n    self.environ = environ = self.build_environ(sock_file, conn)\n  File "/usr/local/web2py/gluon/rocket.py", line 1650, in build_environ\n    request = self.read_request_line(sock_file)\n  File "/usr/local/web2py/gluon/rocket.py", line 1388, in read_request_line\n    d = sock_file.readline()\n  File "/usr/lib/python2.7/socket.py", line 447, in readline\n    data = self._sock.recv(self._rbufsize)\n  File "/usr/lib/python2.7/ssl.py", line 241, in recv\n    return self.read(buflen)\n  File "/usr/lib/python2.7/ssl.py", line 160, in read\n    return self._sslobj.read(len)\nSSLError: The read operation timed out\n'
+p239
+s.

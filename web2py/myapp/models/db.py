@@ -90,3 +90,12 @@ auth.settings.reset_password_requires_verification = True
 
 ## after defining tables, uncomment below to enable auditing
 # auth.enable_record_versioning(db)
+
+import datetime
+
+db = DAL('sqlite://webform.sqlite')
+db.define_table('tablebar_schedules',
+                Field('date', 'datetime', widget=SQLFORM.widgets.datetime.widget),
+                Field('location', 'string', requires=[IS_NOT_EMPTY()]),
+                Field('content', 'string', requires=[IS_NOT_EMPTY()]),
+                Field('isAlarm', widget=SQLFORM.widgets.boolean.widget))
