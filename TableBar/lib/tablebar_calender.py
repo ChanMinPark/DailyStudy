@@ -83,7 +83,7 @@ def getSchedules():
   text = page.read()
 	
   schedule_record = text.split('<Table')[1].split('</th>')[6].split('</Table>')[0].split('/tr')
-	
+  print schedule_record
   schedules = []
 	
   for record in schedule_record:
