@@ -42,6 +42,7 @@ def getWeek():
       if dd > 30:
         dd = dd-30
     
+    print dd
     if dd in sche_day:
       line_2 = line_2 + "*%02d "%(dd)
     else:
