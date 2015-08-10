@@ -4,9 +4,9 @@ def getWeek():
   now = time.localtime()
   
   today = now.tm_mday
-  wday = now.tm_wday
+  wday = now.tm_wday #Mon:0 ~ Sun:6
   
-  line_1 = returnMonth(now.tm_mon) + "#Sun Mon The Wed Thu Fri Sat "
+  line_1 = returnMonth(now.tm_mon) + "#Mon The Wed Thu Fri Sat Sun "
   line_2 = "%02d #"%(today)
   
   weekdays = [0,0,0,0,0,0,0]
