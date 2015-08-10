@@ -7,7 +7,7 @@ def getWeek():
   wday = now.tm_wday
   
   line_1 = returnMonth(now.tm_mon) + "#Sun Mon The Wed Thu Fri Sat "
-  line_2 = "%02d #"%(now.tm_mday)
+  line_2 = "%02d #"%(today)
   
   weekdays = [0,0,0,0,0,0,0]
   weekdays[wday] = today
