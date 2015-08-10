@@ -25,6 +25,7 @@ def getWeek():
   
   
   sche_day = getSchedules()
+  sche_day = map(int, sche_day)
   print sche_day
   
   for dd in weekdays:
