@@ -83,7 +83,7 @@ def getSchedules():
   text = page.read()
 	
   schedule_record = text.split('<Table')[1].split('</th>')[6].split('</Table>')[0].split('/tr')
-  print schedule_record
+  #print schedule_record
   schedules = []
 	
   for record in schedule_record:
@@ -94,11 +94,11 @@ def getSchedules():
     data['location'] = record.split('<td>')[2].split('</td>')[0]
     data['content'] = record.split('<td>')[3].split('</td>')[0]
     schedules.append(data)
-    print data
+    #print data
 	
   schedules_day = []
   for i in schedules:
-    schedules_day.append(i['date'])
+    schedules_day.append(i['date'].split(' ')[0].split('-').[2])
 	
   return schedules_day
 	
