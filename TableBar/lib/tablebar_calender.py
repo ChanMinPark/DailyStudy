@@ -80,25 +80,25 @@ def returnMonth(a):
 
 def getSchedules():
   page = urllib2.urlopen("https://169.254.1.89:8000/myapp/default/project_tablebar_setting")
-	text = page.read()
+  text = page.read()
 	
-	schedule_record = text.split('<Table')[1].split('</th>')[6].split('</Table>')[0].split('/tr')
+  schedule_record = text.split('<Table')[1].split('</th>')[6].split('</Table>')[0].split('/tr')
 	
-	schedules = []
+  schedules = []
 	
-	for record in schedule_record:
-	  data = {}
-	  data['date'] = record.split('<td>')[1].split('</td>')[0]
-	  data['location'] = record.split('<td>')[2].split('</td>')[0]
-	  data['content'] = record.split('<td>')[3].split('</td>')[0]
-	  schedules.append(data)
-	  print data
+  for record in schedule_record:
+    data = {}
+    data['date'] = record.split('<td>')[1].split('</td>')[0]
+    data['location'] = record.split('<td>')[2].split('</td>')[0]
+    data['content'] = record.split('<td>')[3].split('</td>')[0]
+    schedules.append(data)
+    print data
 	
-	schedules_day = []
-	for i in schedules:
-	  schedules_day.append(i['date'])
+  schedules_day = []
+  for i in schedules:
+    schedules_day.append(i['date'])
 	
-	return schedules_day
+  return schedules_day
 	
 	
 	
