@@ -25,6 +25,7 @@ def getWeek():
   
   
   sche_day = getSchedules()
+  print sche_day
   
   for dd in weekdays:
     if (now.tm_mon-1) in [1,3,5,7,8,10,12]:
