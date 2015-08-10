@@ -16,7 +16,7 @@ def main():
   while True:
     # Display calender
     plines = getWeek()
-    cycle = 4
+    cycle = 5
     while cycle > 0:
       time.sleep(2)
       lcd_string(plines[0], LCD_LINE_1, 1)
