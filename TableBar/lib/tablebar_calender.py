@@ -1,4 +1,5 @@
 import time
+import urllib2
 
 def getWeek():
   now = time.localtime()
@@ -22,6 +23,9 @@ def getWeek():
     temp = temp + 1
     weekdays[temp] = weekdays[temp-1] + 1
   
+  
+  sche_day = getSchedules()
+  
   for dd in weekdays:
     if (now.tm_mon-1) in [1,3,5,7,8,10,12]:
       if dd < 1:
@@ -36,8 +40,11 @@ def getWeek():
     else:
       if dd > 30:
         dd = dd-30
-        
-    line_2 = line_2 + " %02d "%(dd)
+    
+    if dd in sche_day:
+      line_2 = line_2 + "*%02d "%(dd)
+    else:
+      line_2 = line_2 + " %02d "%(dd)
   
   lines = ["",""]
   lines[0] = line_1
@@ -70,3 +77,40 @@ def returnMonth(a):
     return "Nov"
   elif a == 12:
     return "Dec"
+
+def getSchedules():
+  page = urllib2.urlopen("https://169.254.1.89:8000/myapp/default/project_tablebar_setting")
+	text = page.read()
+	
+	schedule_record = text.split('<Table')[1].split('</th>')[6].split('</Table>')[0].split('/tr')
+	
+	schedules = []
+	
+	for record in schedule_record:
+	  data = {}
+	  data['date'] = record.split('<td>')[1].split('</td>')[0]
+	  data['location'] = record.split('<td>')[2].split('</td>')[0]
+	  data['content'] = record.split('<td>')[3].split('</td>')[0]
+	  schedules.append(data)
+	  print data
+	
+	schedules_day = []
+	for i in schedules:
+	  schedules_day.append(i['date'])
+	
+	return schedules_day
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
