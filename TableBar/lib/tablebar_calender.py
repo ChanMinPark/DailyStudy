@@ -26,7 +26,7 @@ def getWeek():
   
   sche_day = getSchedules()
   sche_day = map(int, sche_day)
-  print sche_day
+  #print sche_day
   
   for dd in weekdays:
     if (now.tm_mon-1) in [1,3,5,7,8,10,12]:
@@ -43,7 +43,7 @@ def getWeek():
       if dd > 30:
         dd = dd-30
     
-    print dd
+    #print dd
     if dd in sche_day:
       line_2 = line_2 + "*%02d "%(dd)
     else:
