@@ -87,6 +87,8 @@ def getSchedules():
   schedules = []
 	
   for record in schedule_record:
+    if 'td' not in record:
+    	continue
     data = {}
     data['date'] = record.split('<td>')[1].split('</td>')[0]
     data['location'] = record.split('<td>')[2].split('</td>')[0]
