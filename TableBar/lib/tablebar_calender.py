@@ -98,7 +98,7 @@ def getSchedules():
 	
   schedules_day = []
   for i in schedules:
-    schedules_day.append(i['date'].split(' ')[0].split('-').[2])
+    schedules_day.append(i['date'].split(' ')[0].split('-')[2])
 	
   return schedules_day
 	
