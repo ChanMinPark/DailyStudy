@@ -39,6 +39,7 @@ def getWeek():
         
     line_2 = line_2 + " %02d "%(dd)
   
+  lines = ["",""]
   lines[0] = line_1
   lines[1] = line_2
   
