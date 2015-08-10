@@ -7,7 +7,7 @@ from tablebar_calender import *
 def main():
   # Initialise display
   lcd_init()
-  """
+  
   while True:
     # Display date & time
     lcd_string(getData(), LCD_LINE_1, 2)
@@ -24,7 +24,7 @@ def main():
       plines[0] = plines[0][:4]+plines[0][8:]
       plines[1] = plines[1][:4]+plines[1][8:]
       cycle = cycle - 1
-
+  """
 
 if __name__ == '__main__':
   try:
