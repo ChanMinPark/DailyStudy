@@ -3,8 +3,9 @@
 import urllib2
 
 def getWeather():
-  loc = urllib2.quote(getLocation().encode('utf8'))
-  page = urllib2.urlopen("http://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&ie=utf8&query=%EB%82%A0%EC%94%A8+"+loc)
+  pre_url = u'http://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&ie=utf8&query=%EB%82%A0%EC%94%A8+'+getLocation()
+  url = urllib2.quote(pre_url.encode('utf8'), '/:'))
+  page = urllib2.urlopen(url)
   text = page.read()
 	
   data = {}
