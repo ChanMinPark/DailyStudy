@@ -12,7 +12,7 @@ def getWeather():
   text = page.read()
 	
   data = {}
-  data['now_temp'] = text.split('<div class=\"c_body\">')[1].split('<div class="tit">')[0].split('<em>')[1].split('<span>')[0]
+  data['now_temp'] = text.split('<div class=\"c_body\">')[1].split('<div class=\"tit\">')[0].split('<em>')[1].split('<span>')[0]
   print data['now_temp']
   data['now_weather'] = text.split('현재,1시간 예보')[1].split('3시간 예보')[0].split('<strong>')[1].split('</strong>')[0]
   data['one_later'] = text.split('현재,1시간 예보')[1].split('3시간 예보')[0].split('<em>')[2].split('<p>')[1].split('</p>')[0]
