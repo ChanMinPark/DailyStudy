@@ -5,10 +5,10 @@ import urllib2
 def getWeather():
   pre_url = "http://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&ie=utf8&query=%EB%82%A0%EC%94%A8+"+getLocation()
   print pre_url
-  #req = urllib2.Request(pre_url, headers={'User-Agent': 'Mozilla/5.0 (Windows; U; MSIE 9.0; Windows NT 9.0; en-US)'})
+  req = urllib2.Request(pre_url, headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; Windows; U; MSIE 9.0; Windows NT 9.0; en-US) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11'})
   #url = urllib2.quote(pre_url, '/:')
   #print url
-  page = urllib2.urlopen(pre_url)
+  page = urllib2.urlopen(req)
   text = page.read()
   print text
   
