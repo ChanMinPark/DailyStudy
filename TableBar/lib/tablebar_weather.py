@@ -10,7 +10,8 @@ def getWeather():
   #print url
   page = urllib2.urlopen(req)
   text = page.read()
-	
+  print text
+  
   data = {}
   print text.split('c_body')[1].split('tldw_tbl')[0]
   data['now_temp'] = text.split('c_body')[1].split('tldw_tbl')[0].split('<em>')[1].split('<span>')[0]
