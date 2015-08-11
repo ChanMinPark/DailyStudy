@@ -4,8 +4,8 @@ import urllib2
 
 def getWeather():
   pre_url = "http://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&ie=utf8&query=날씨+"+getLocation()
-  #url = urllib2.quote(unicode(pre_url).encode('utf8'), '/:')
-  page = urllib2.urlopen(pre_url)
+  url = urllib2.quote(unicode(pre_url), '/:')
+  page = urllib2.urlopen(url)
   text = page.read()
 	
   data = {}
