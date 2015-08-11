@@ -8,7 +8,7 @@ def getWeather():
   req = urllib2.Request(pre_url, headers={'User-Agent': 'Mozilla/5.0'})
   #url = urllib2.quote(pre_url, '/:')
   #print url
-  page = urllib2.request.urlopen(req)
+  page = urllib2.urlopen(req)
   text = page.read()
 	
   data = {}
