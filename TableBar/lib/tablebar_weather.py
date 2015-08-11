@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*- 
 
 import urllib2
+import urllib2.request
 
 def getWeather():
   pre_url = "http://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&ie=utf8&query=%EB%82%A0%EC%94%A8+"+urllib2.quote("날씨+"+getLocation())
   print pre_url
+  req = urllib2.request.Request(pre_url, headers={'User-Agent': 'Mozilla/5.0'})
   #url = urllib2.quote(pre_url, '/:')
   #print url
-  page = urllib2.urlopen(pre_url)
+  page = urllib2.request.urlopen(req)
   text = page.read()
 	
   data = {}
