@@ -3,11 +3,11 @@
 import urllib2
 
 def getWeather():
-  pre_url = "http://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&ie=utf8&query=%EB%82%A0%EC%94%A8+"+urllib2.quote(getLocation())
+  pre_url = "http://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&ie=utf8&query=%EB%82%A0%EC%94%A8+"+urllib2.quote(("날씨+"+getLocation()).encode('utf8'))
   print pre_url
-  url = urllib2.quote(pre_url, '/:')
-  print url
-  page = urllib2.urlopen(url)
+  #url = urllib2.quote(pre_url, '/:')
+  #print url
+  page = urllib2.urlopen(pre_url)
   text = page.read()
 	
   data = {}
