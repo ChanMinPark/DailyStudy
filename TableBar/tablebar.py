@@ -13,7 +13,7 @@ def main():
     # Display date & time
     lcd_string(getData(), LCD_LINE_1, 2)
     lcd_string(getTime(), LCD_LINE_2, 2)
-    
+  """  
   while True:
     # Display calender
     plines = getWeek()
@@ -25,15 +25,15 @@ def main():
       plines[0] = plines[0][:4]+plines[0][8:]
       plines[1] = plines[1][:4]+plines[1][8:]
       cycle = cycle - 1
-  """
   
+  """
   while True:
     data = {}
     data = getWeather()
     lcd_string("Now : "+data['now_temp']+"'C, "+data['now_weather'], LCD_LINE_1, 2)
     lcd_string("1h : "+data['one_later']+", 2h : "+data['two_later'], LCD_LINE_2, 2)
     time.sleep(5)
-
+  """
 if __name__ == '__main__':
   try:
     main()
