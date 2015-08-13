@@ -2,15 +2,38 @@
 
 ####**1. 개요**  
 연구실/회사 같은 작업 공간에서 책상 위에 놓을 TableBar를 개발한다.  
+
+TableBar 프로젝트의 구성요소는 아래 3가지이다.  
+    - TableBar 본체 : 정보 제공의 주체이며 TableBar 프로그램이 실행된다.  
+    - Web Page : TableBar에 정보를 표시하기 위한 기본 정보를 설정한다.  
+    - Sensor Device : 온도, 습도, 조도, 강수 정보를 센싱하여 Web Server로 전송하여 DB에 저장하게 한다.  
+
 TableBar는 다음과 같은 기능을 제공한다.  
 
     (1)시계 : 일반적으로 시간을 표시해준다.
     (2)달력 : 월 또는 주 단위의 날짜를 보여주며 일정이 있는 날짜에는 표시가 된다.
     (3)날씨 : 예보날씨, 실외날씨, 출장지 날씨가 표시된다.
-    (4)알림 : 알림을 설정한 일정에 대해 LED로 알림을 준다.
-    (5)Web Page : web2py를 이용한 웹페이지에서 일정 및 지역을 설정하는 기능을
+              날씨정보의 소스로는 네이버 날씨와, Sensor Device를 복합적으로 이용한다.
+    (4)주식 : 관심 종목들을 보여준다.
+    (5)스포츠 : 관심 야구팀이 경기중일때 스코어를 보여준다.
+    (6)알림 : 알림을 설정한 일정에 대해 LED로 알림을 준다.
+              스포츠(스코어 or 경기 결과)에 대해 LED알림을 준다.(정보도 LCD에 출력)
+              날씨 변경에 대해 LED 및 LCD 알림을 준다.
+    
+TableBar의 인터페이스는 아래와 같다.
+
+    (1) 외부 버튼 : 1개 또는 2개의 물리적버튼을 통해서 디스플레이의 화면전환 및 출력화면모드를 선택한다.
+                    버튼이 눌릴때의 동작과, 오랫동안 입력이 없을때의 동작을 고려하자.
+                    (ex. 오랫동안 입력이 없을 경우 기본화면(시계)으로 표시)
+    (2) Web Page : web2py를 이용하여 TableBar에서 필요한 기본정보를 설정할 수 있는 Web Page를 만든다.
+                  지역(날씨정보), 일정, 주식(관심종목 등록), 스포츠(관심 야구팀 등록)
+                  표시할 화면모드 선택(ex. 주식에 관심이 없으면 주식은 표시하지 않도록 설정)
 
 최종적으로는 Color LCD module을 이용해서 정보를 Display하고 싶지만 현재 가지고 있지 않으므로, 일단 LCD를 통해 Text로만 정보들을 출력한다.  
+(2015.08.12 백정엽 교수님 조언으로 LCD를 통한 출력말고 물리적인 디자인으로 표시해도 좋을 것 같다. 예를 들면 날씨를 알릴때 원으로 된 판에 여러 날씨가 표시되어 있고 바늘이 현재 날씨를 가리키는 방식으로.  
+그래서 아래 사진과 같은 모양을 구상함. 윗면 시계는 항상 사용자 방향으로 유지. 아랫쪽에 받침대를 두고 받침대에 라즈베리파이를 둠. 삼각기둥이 회전.)  
+![](https://github.com/ChanMinPark/DailyStudy/blob/master/RefImage/TableBar_future_2.jpg)
+
 그리고 TableBar와는 별도로 실외 날씨 정보를 측정할 Sensor Device를 만든다. Sensor Device는 다음과 같은 값을 측정한다.  
 
    - 온도
@@ -41,6 +64,7 @@ https://coggle.it/diagram/Vb69jbF6k29HmWtm/3a53c5c49a01a4adf0150bce7358cc725d32e
     : getTime() : XX:XX:XX(시:분:초)  
 ![](https://github.com/ChanMinPark/DailyStudy/blob/master/RefImage/TableBar_2.jpg)
 - 달력 모듈 구현.  
+    : getWeek() : 이번 주의 날짜를 가져옴.  
     : LCD가 2줄이기 때문에 한주 단위로 출력  
     : 윗줄-요일표시, 아랫줄 - 날짜표시  
     : 두자리 수의 날짜가 있는 주에는 칸이 부족. 그래서 길게 흐르는 문자열로 구현.  
@@ -53,5 +77,11 @@ https://coggle.it/diagram/Vb69jbF6k29HmWtm/3a53c5c49a01a4adf0150bce7358cc725d32e
     : 달력 모듈에서 DB에 접근하여 일정을 받아서 달력에 표시 할 예정.  
 - Web Page  
     : Table Bar Setting Page 제작  
-    : DB의 tablebar_schedules 테이블를 삽입, 삭제, 수정, 조회 할 수 있음.  
+    : DB의 tablebar_schedules 테이블를 삽입, 삭제, 수정, 조회 할 수 있음.(일정)  
+    : DB의 tablebar_user_loctaion 테이블을 삽입, 삭제, 수정, 조회 할 수 있음.(지역)  
 ![](https://github.com/ChanMinPark/DailyStudy/blob/master/RefImage/TableBar_3.jpg)
+- 날씨 모듈 구현.  
+    : 네이버 날씨를 가져옴.  
+    : web2py로 만든 웹서버를 이용하여 지역을 설정하고 이를 DB에 저장함.  
+    : getWeather() : web에 설정한 지역을 가져와서 네이버 날씨의 예보를 가져옴.(기온, 날씨)  
+    (구현중...네이버 날씨 정보를 가져오는 과정에서 html문서를 읽어올수가 없음. 안랩에이전트 때문에...)
