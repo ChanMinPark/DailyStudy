@@ -28,12 +28,13 @@ def main():
         if getLock() == False:
             setLock(True)
             while cycle > 0:
-                time.sleep(2)
+                time.sleep(1)
                 lcd_string(plines[0], LCD_LINE_1, 1)
                 lcd_string(plines[1], LCD_LINE_2, 1)
                 plines[0] = plines[0][:4]+plines[0][8:]
                 plines[1] = plines[1][:4]+plines[1][8:]
                 cycle = cycle - 1
+                time.sleep(1)
             setLock(False)
         if cycle == 0:
             setTask(0)
