@@ -9,7 +9,6 @@ def main():
     cycle = 10
     while getTask() == 0:
     	if cycle == 0:
-    	    setLock(False)
     	    setTask(1)
     	    break
     	if getLock() == False:
@@ -19,6 +18,7 @@ def main():
     	    lcd_string(getTime(), LCD_LINE_2, 2)
     	    cycle = cycle - 1
     	    time.sleep(1)
+    	    setLock(False)
     
     # Display date information
     while getTask() == 1:
