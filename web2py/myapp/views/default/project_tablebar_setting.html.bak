@@ -7,6 +7,17 @@
         You can set a location and add your schedules.<br>
         Also, you can set alarm for schedule.<br><br>
         <br>
+        <B>[지역 설정]</B><br>
+        반드시 한 지역만 설정해주세요. 다른 지역을 원하시면 기존의 지역을 삭제한 후 입력 바랍니다.<br>
+        {{=form2}}
+        <br>
+        {{for row in rows2:}}
+            <tr>
+                <td>설정된 지역 : {{=row.location}}</td>
+                <td><a href={{=URL('myapp','default','database_update_delete',args=['tablebar_user_location','delete',row.id])}}>삭제</a></td>
+            </tr>
+        {{pass}}
+        <br><br><br>
         <B>[일정 추가 하기]</B><br>
         {{=form.custom.begin}}
         날짜 : {{=form.custom.widget.date}}<br><br>
@@ -31,8 +42,8 @@
                 <td>{{=row.location}}</td>
                 <td>{{=row.content}}</td>
                 <td>{{=row.isAlarm}}</td>
-                <td><a href={{=URL('myapp','default','project_tablebar_setting',args=['tablebar_schedules','update',row.id])}}>수정</a></td>
-                <td><a href={{=URL('myapp','default','project_tablebar_setting',args=['tablebar_schedules','delete',row.id])}}>삭제</a></td>
+                <td><a href={{=URL('myapp','default','database_update_delete',args=['tablebar_schedules','update',row.id])}}>수정</a></td>
+                <td><a href={{=URL('myapp','default','database_update_delete',args=['tablebar_schedules','delete',row.id])}}>삭제</a></td>
             </tr>
             {{pass}}
         </Table>

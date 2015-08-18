@@ -17,6 +17,7 @@ def index():
     if you need a simple wiki simply replace the two lines below with:
     return auth.wiki()
     """
+    session.which_task = 1
     response.flash = T("Hi everyone!")
     return dict(message=T('Welcome to ChanMin\'s blog'))
 
@@ -55,7 +56,18 @@ def project_tablebar_setting():
         response.flash = 'Try again - no fields can be empty.'
     
     rows = db(db.tablebar_schedules.id>0).select()
-    return dict(form=form, rows=rows)
+    
+    form2 = SQLFORM(db.tablebar_user_location)
+    if form2.accepts(request,session):
+        response.flash = 'Good! Your location is set.'
+    elif form2.errors:
+        response.flash = 'Please check your location.'
+    else:
+        response.flash = 'Enter your location.'
+        
+    rows2 = db(db.tablebar_user_location.id>0).select()
+        
+    return dict(form=form, rows=rows, form2=form2, rows2=rows2)
 
 def database_update_delete():
     if request.args(0) == 'tablebar_schedules':
@@ -72,6 +84,10 @@ def database_update_delete():
             
         if request.args(1) == 'delete':
             db(db.tablebar_schedules.id == request.args(2)).delete()
+            return dict(form=redirect(URL('myapp','default','project_tablebar_setting')))
+    elif request.args(0) == 'tablebar_user_location':
+        if request.args(1) == 'delete':
+            db(db.tablebar_user_location.id == request.args(2)).delete()
             return dict(form=redirect(URL('myapp','default','project_tablebar_setting')))
 
 def profile():

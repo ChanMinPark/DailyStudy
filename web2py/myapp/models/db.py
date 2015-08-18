@@ -99,3 +99,6 @@ db.define_table('tablebar_schedules',
                 Field('location', 'string', requires=[IS_NOT_EMPTY()]),
                 Field('content', 'string', requires=[IS_NOT_EMPTY()]),
                 Field('isAlarm', widget=SQLFORM.widgets.boolean.widget))
+
+db.define_table('tablebar_user_location',
+                Field('location', 'string', requires=[IS_NOT_EMPTY()]))

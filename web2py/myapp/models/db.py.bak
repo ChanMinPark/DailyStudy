@@ -95,7 +95,7 @@ import datetime
 
 db = DAL('sqlite://webform.sqlite')
 db.define_table('tablebar_schedules',
-                Field('date', 'datetime', defualt=request.now, widget=SQLFORM.widgets.datetime.widget),
+                Field('date', 'datetime', widget=SQLFORM.widgets.datetime.widget),
                 Field('location', 'string', requires=[IS_NOT_EMPTY()]),
                 Field('content', 'string', requires=[IS_NOT_EMPTY()]),
                 Field('isAlarm', widget=SQLFORM.widgets.boolean.widget))
