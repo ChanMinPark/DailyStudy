@@ -5,10 +5,6 @@ from tablebar_weather import *
 from tablebar_globals import *
 
 def main():
-    # Initialise display
-    lcd_init()
-    whiteLCDon()
-    
     # Display time information
     cycle = 10
     while getTask() == 0:
@@ -53,7 +49,11 @@ def main():
     """
 if __name__ == '__main__':
     try:
-        main()
+    	# Initialise display
+        lcd_init()
+        whiteLCDon()
+        while True:
+            main()
     except KeyboardInterrupt:
         pass
     finally:
