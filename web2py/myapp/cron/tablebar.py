@@ -49,14 +49,17 @@ def main():
         lcd_string("1h : "+data['one_later']+", 2h : "+data['two_later'], LCD_LINE_2, 2)
         time.sleep(5)
     """
+    
+def init_current():
+    current.whichtask = 0
+    current.islock = False
+
 if __name__ == '__main__':
     try:
     	# Initialise display
         lcd_init()
         whiteLCDon()
-        current.whichtask = 0
-        current.islock = False
-        
+        init_current()
         while True:
             main()
     except KeyboardInterrupt:
