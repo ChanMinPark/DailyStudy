@@ -3,8 +3,10 @@ from tablebar_time import *
 from tablebar_calender import *
 from tablebar_weather import *
 from tablebar_globals import *
-
+global chp
+chp=0
 def main():
+    global chp
     # Display time information
     cycle = 10
     while getTask() == 0:
@@ -20,16 +22,16 @@ def main():
     	    time.sleep(1)
     	    setLock(False)
     
-    print "check point 1"
+    chp=0
     # Display date information
     while getTask() == 1:
-    	print "check point 2"
+    	chp+=1 #1
         # Display calender
         plines = getWeek()
-        print "check point 3"
+        chp+=1 #2
         cycle = 5
         if getLock() == False:
-            print "check point 4"
+            chp+=1 #3
             setLock(True)
             while cycle > 0:
                 time.sleep(1)
@@ -53,6 +55,7 @@ def main():
         time.sleep(5)
     """
 if __name__ == '__main__':
+    global chp
     try:
     	# Initialise display
         lcd_init()
@@ -63,6 +66,6 @@ if __name__ == '__main__':
         pass
     finally:
         lcd_byte(0x01, LCD_CMD)
-        lcd_string("Goodbye!",LCD_LINE_1,2)
+        lcd_string("Goodbye! %d"$(chp),LCD_LINE_1,2)
 	#lcd_string("%d"%(session.which_task),LCD_LINE_2,2)
         GPIO.cleanup()
