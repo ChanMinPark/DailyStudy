@@ -8,26 +8,26 @@ from gluon import current
 def main():
     # Display time information
     cycle = 10
-    while current.which_task == 0:
+    while current.whichtask == 0:
     	if cycle == 0:
-    	    current.which_task = 1
+    	    current.whichtask = 1
     	    break
-    	if current.is_lock == False:
-    	    current.is_lock = True
+    	if current.islock == False:
+    	    current.islock = True
     	    # Display date & time
     	    lcd_string(getData(), LCD_LINE_1, 2)
     	    lcd_string(getTime(), LCD_LINE_2, 2)
     	    cycle = cycle - 1
     	    time.sleep(1)
-    	    current.is_lock = False
+    	    current.islock = False
     
     # Display date information
-    while current.which_task == 1:
+    while current.whichtask == 1:
         # Display calender
         plines = getWeek()
         cycle = 5
-        if current.is_lock == False:
-            current.is_lock = True
+        if current.islock == False:
+            current.islock = True
             while cycle > 0:
                 time.sleep(1)
                 lcd_string(plines[0], LCD_LINE_1, 1)
@@ -36,9 +36,9 @@ def main():
                 plines[1] = plines[1][:4]+plines[1][8:]
                 cycle = cycle - 1
                 time.sleep(1)
-            current.is_lock = False
+            current.islock = False
         if cycle == 0:
-            current.which_task = 0
+            current.whichtask = 0
             break
   
     """
@@ -54,8 +54,8 @@ if __name__ == '__main__':
     	# Initialise display
         lcd_init()
         whiteLCDon()
-        current.which_task = 0
-        current.is_lock = False
+        current.whichtask = 0
+        current.islock = False
         
         while True:
             main()
