@@ -1,5 +1,5 @@
 #< TableBar Project >  
-(!!!!!Table Bar의 개발 코드는 web2py의 myapp 어플리케이션으로 병합되어서 이곳의 코드는 업데이트되지 않음. 하지만 Table Bar의 시스템 설계는 이곳에 설명됨.)  
+(!!!!!Table Bar의 개발 코드는 [web2py의 myapp](https://github.com/ChanMinPark/DailyStudy/tree/master/web2py/myapp) 어플리케이션으로 병합되어서 이곳의 코드는 업데이트되지 않음. 하지만 Table Bar의 시스템 설계는 이곳에 설명됨.)  
 ####**1. 개요**  
 연구실/회사 같은 작업 공간에서 책상 위에 놓을 TableBar를 개발한다.  
 
