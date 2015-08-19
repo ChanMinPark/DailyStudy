@@ -20,12 +20,16 @@ def main():
     	    time.sleep(1)
     	    setLock(False)
     
+    print "check point 1"
     # Display date information
     while getTask() == 1:
+    	print "check point 2"
         # Display calender
         plines = getWeek()
+        print "check point 3"
         cycle = 5
         if getLock() == False:
+            print "check point 4"
             setLock(True)
             while cycle > 0:
                 time.sleep(1)
