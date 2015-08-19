@@ -79,9 +79,38 @@ https://coggle.it/diagram/Vb69jbF6k29HmWtm/3a53c5c49a01a4adf0150bce7358cc725d32e
     : Table Bar Setting Page 제작  
     : DB의 tablebar_schedules 테이블를 삽입, 삭제, 수정, 조회 할 수 있음.(일정)  
     : DB의 tablebar_user_loctaion 테이블을 삽입, 삭제, 수정, 조회 할 수 있음.(지역)  
-![](https://github.com/ChanMinPark/DailyStudy/blob/master/RefImage/TableBar_3.jpg)
+![](https://github.com/ChanMinPark/DailyStudy/blob/master/RefImage/TableBar_3.jpg)  
+  
 - 날씨 모듈 구현.  
     : 네이버 날씨를 가져옴.  
     : web2py로 만든 웹서버를 이용하여 지역을 설정하고 이를 DB에 저장함.  
     : getWeather() : web에 설정한 지역을 가져와서 네이버 날씨의 예보를 가져옴.(기온, 날씨)  
-    (구현중...네이버 날씨 정보를 가져오는 과정에서 html문서를 읽어올수가 없음. 안랩에이전트 때문에...)
+    **(구현중...네이버 날씨 정보를 가져오는 과정에서 html문서를 읽어올수가 없음. 안랩에이전트 때문에...)**  
+  
+- LCD 모듈을 pcb판에 결합하여 모양을 새로 잡음.  
+![](https://github.com/ChanMinPark/DailyStudy/blob/master/RefImage/new_shape.jpg)
+- web2py와 TableBar 프로그램을 개별적으로 개발하던 것을 web2py의 cron기능을 이용하여 web2py로 병합함.  
+    : 기존에 TableBar 프로그램에서 web2py의 페이지 html코드를 긁어오던 것을, 바로 DB 연결하도록 코드 수정 필요.  
+    : 지역, 일정을 가져오는 부분이 수정이 필요함.  
+    : [cron 기능 사용하기](http://walkinpcm.blogspot.kr/2015/08/web2py-cron.html)  
+    : cron으로 실행한 python 코드에서 web2py의 global 변수를 사용할 수 있는 방법을 찾으려 하였는데 알아내지 못하여 module에 전역변수로 사용할 변수를 선언하고 setter와 getter로 접근하기로 함. (cron으로 실행하는 py파일도 web2py의 module에 있는 함수에 접근 할 수 있음을 이용.)  
+
+####**6. 개발 계획**  
+[8월 28일 이전까지 개발할 계획]
+
+- 스포츠(야구) 정보 출력.  
+    : 관심 야구팀을 등록.  
+    : 프로야구 시즌에만 정보를 출력.(시즌이 아니면 시즌이 아니라고 띄움)  
+    : 관심 야구팀이 경기를 시작하면 알림.  
+    : 관심 야구팀의 경기가 스코어가 변경될때마다 알림.  
+    : 관심 야구팀의 경기가 끝나면 최종 스코어를 출력하며 동시에 알림.  
+- 날씨 정보 출력.  
+    : 보안에이전트가 없는 네트워크에 라즈베리파이 설치하여 날씨 정보를 대신 추출하게 함.  
+    : 향후에는 일정에 등록된 출장지의 날씨 정보도 출력할 것이나, 현재는 사용자의 지역에 대해서만 구현.  
+- 알림.  
+    : 알림을 주는 상황에 따라 각각 다른 알림을 구현.  
+    : 알림은 LED를 이용하고 알림 내용을 LCD로 출력.  
+    : 알림을 주는 상황  
+      (1) 등록된 일정의 시간이 되었을 때  
+      (2) 날씨 상태가 변경되었을 때  
+      (3) 야구팀이 경기를 시작할때, 스코어가 변경될 때, 경기가 종료 될 때  
