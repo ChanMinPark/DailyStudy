@@ -2,32 +2,32 @@ from lcd import *
 from tablebar_time import *
 from tablebar_calender import *
 from tablebar_weather import *
-#from tablebar_globals import *
-from gluon import current
+from tablebar_globals import *
+#from gluon import current
 
 def main():
     # Display time information
     cycle = 10
-    while current.whichtask == 0:
+    while getTask() == 0:
     	if cycle == 0:
-    	    current.whichtask = 1
+    	    setTask(1)
     	    break
-    	if current.islock == False:
-    	    current.islock = True
+    	if getLock() == False:
+    	    setLock(True)
     	    # Display date & time
     	    lcd_string(getData(), LCD_LINE_1, 2)
     	    lcd_string(getTime(), LCD_LINE_2, 2)
     	    cycle = cycle - 1
     	    time.sleep(1)
-    	    current.islock = False
+    	    setLock(False)
     
     # Display date information
-    while current.whichtask == 1:
+    while getTask() == 1:
         # Display calender
         plines = getWeek()
         cycle = 5
-        if current.islock == False:
-            current.islock = True
+        if getLock() == False:
+            setLock(True)
             while cycle > 0:
                 time.sleep(1)
                 lcd_string(plines[0], LCD_LINE_1, 1)
@@ -36,9 +36,9 @@ def main():
                 plines[1] = plines[1][:4]+plines[1][8:]
                 cycle = cycle - 1
                 time.sleep(1)
-            current.islock = False
+            setLock(False)
         if cycle == 0:
-            current.whichtask = 0
+            setTask(0)
             break
   
     """
@@ -50,16 +50,16 @@ def main():
         time.sleep(5)
     """
     
-def init_current():
-    current.whichtask = 0
-    current.islock = False
+def init_globals():
+    setTask(0)
+    setLock(False)
 
 if __name__ == '__main__':
     try:
     	# Initialise display
         lcd_init()
         whiteLCDon()
-        init_current()
+        init_globals()
         while True:
             main()
     except KeyboardInterrupt:
