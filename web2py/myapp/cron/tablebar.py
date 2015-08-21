@@ -39,9 +39,9 @@ def main():
                 time.sleep(1)
             setLock("False")
         if cycle == 0:
-            setTask("2")
+            setTask("0")
             break
-    
+    """
     # Display Baseball information
     while getTask() == "2":
     	plines = getBaseball()
@@ -57,7 +57,7 @@ def main():
     	if cycle == 0:
     	    setTask("0")
     	    break
-    	
+    """	
     """
     while True:
         data = {}a
