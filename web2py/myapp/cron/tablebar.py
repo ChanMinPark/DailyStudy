@@ -3,6 +3,7 @@ from tablebar_time import *
 from tablebar_calender import *
 from tablebar_weather import *
 from tablebar_globals import *
+from tablebar_baseball import *
 #from gluon import current
 
 def main():
@@ -38,9 +39,25 @@ def main():
                 time.sleep(1)
             setLock("False")
         if cycle == 0:
-            setTask("0")
+            setTask("2")
             break
-  
+    
+    # Display Baseball information
+    while getTask() == "2":
+    	plines = getBaseball()
+    	cycle = 5
+    	if getLock() == "False":
+    	    setLock("True")
+    	    while cycle > 0:
+    	    	lcd_string(plines[0], LCD_LINE_1, 2)
+    	    	lcd_string(plines[1], LCD_LINE_2, 2)
+    	    	cycle = cycle - 1
+    	    	time.sleep(1)
+    	    setLock("False")
+    	if cycle == 0:
+    	    setTask("0")
+    	    break
+    	
     """
     while True:
         data = {}a
