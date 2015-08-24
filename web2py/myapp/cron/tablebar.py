@@ -9,7 +9,7 @@ from tablebar_baseball import *
 def main():
     # Display time information
     cycle = 10
-    if getTask() == "0":
+    while getTask() == "0":
     	if cycle == 0:
     	    setTask("1")
     	    break
@@ -23,7 +23,7 @@ def main():
     	    setLock("False")
     
     # Display date information
-    if getTask() == "1":
+    while getTask() == "1":
         # Display calender
         plines = getWeek()
         cycle = 5
@@ -43,7 +43,7 @@ def main():
             break
     
     # Display Baseball information
-    if getTask() == "2":
+    while getTask() == "2":
     	plines = getBaseball()
     	cycle = 5
     	if getLock() == "False":
