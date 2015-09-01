@@ -104,17 +104,31 @@ https://coggle.it/diagram/Vb69jbF6k29HmWtm/3a53c5c49a01a4adf0150bce7358cc725d32e
     : 관심 야구팀의 경기가 끝나면 최종 스코어를 출력하며 동시에 알림.  
 ![](https://github.com/ChanMinPark/DailyStudy/blob/master/RefImage/TableBar_4.jpg)
 
-####**6. 개발 계획**  
-[8월 28일 이전까지 개발할 계획]
+- Raspberry Pi 가 부팅 될때 web2py도 같이 실행하기.  
 
-- log 파일 e-mail전송하기
-    : 전에 확인해보니 외부망에서 KETI망으로 못 들어오더라.
-    : 그래서 log파일을 e-mail로 보내서 지속적으로 확인가능하게하고 관리한다.
+
+      #####################################################################  
+      # Run web2py with TableBar  
+      #####################################################################  
+      echo "Run web2py with TableBar"  
+      cd /usr/local/web2py  
+      echo ip addr show wlan0 | grep inet | awk '{print $2}' | cut -d/ -f1  
+      _WIP=$(ip addr show wlan0 | grep inet | awk '{print $2}' | cut -d/ -f1)  
+      printf "%s\n" "$_WIP"  
+      sudo python web2py.py -i "$_WIP" -p 8000 -a 'tinyos' -c server.crt -k server.key -Y &  
+      cd  
 
 - 알림.  
     : 알림을 주는 상황에 따라 각각 다른 알림을 구현.  
-    : 알림은 LED를 이용하고 알림 내용을 LCD로 출력.  
     : 알림을 주는 상황  
-      (1) 등록된 일정의 시간이 되었을 때  
-      (2) 날씨 상태가 변경되었을 때  
-      (3) 야구팀이 경기를 시작할때, 스코어가 변경될 때, 경기가 종료 될 때  
+      (1) 등록된 일정의 시간이 되었을 때: 초록불이 깜박인다.  
+      (2) 야구팀이 경기를 시작할때, 스코어가 변경될 때, 경기가 종료 될 때**(경기시간에 확인필요)**  
+          (2-1) 경기 시작, 끝 : 빨간불이 깜박인다.  
+          (2-2) 스코어 변경 : 빨강, 노랑, 분홍 불이 깜박인다.  
+
+- LCD에 출력되는 문장을 파일에 출력하도록 함. 추후 이 파일을 메일로 주기적으로 보내게 하여 상태확인에 사용할 예정.  
+![](https://github.com/ChanMinPark/DailyStudy/blob/master/RefImage/TableBar_5.jpg)
+
+####**6. 추후 개발 계획**  
+
+log파일을 메일로 보내게 하기 위해서 mailgun에 대하여 알아본다.
